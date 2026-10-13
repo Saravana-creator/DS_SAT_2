@@ -1,0 +1,157 @@
+# ==============================================================================
+# VantageGro Retail Stock Insight — Comprehensive Repository .gitignore
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. GSD (Get Stuff Done) Framework & Agent Metadata Files
+# ------------------------------------------------------------------------------
+.gsd/
+.agent/
+.agents/
+.gemini/
+GSD-STYLE.md
+model_capabilities.yaml
+VERSION
+adapters/
+scripts/validate-*.ps1
+scripts/validate-*.sh
+scripts/search_repo.ps1
+scripts/search_repo.sh
+scripts/setup_search.ps1
+scripts/setup_search.sh
+
+# ------------------------------------------------------------------------------
+# 2. Python & Bytecode
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ------------------------------------------------------------------------------
+# 3. Virtual Environments
+# ------------------------------------------------------------------------------
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# 4. Testing & Code Quality
+# ------------------------------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+coverage.xml
+*.cover
+*.py,cover
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+
+# ------------------------------------------------------------------------------
+# 5. Jupyter Notebooks & Checkpoints
+# ------------------------------------------------------------------------------
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# ------------------------------------------------------------------------------
+# 6. Node / React / Frontend (Vite, Next, npm)
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+jspm_packages/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Production Build Output
+frontend/dist/
+frontend/dist-ssr/
+frontend/build/
+.next/
+out/
+
+# ------------------------------------------------------------------------------
+# 7. Environment & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.pem
+*.key
+*.cert
+
+# ------------------------------------------------------------------------------
+# 8. Operating System & IDE Artifacts
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+~$*
+*.tmp
+
+# Editors
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# ------------------------------------------------------------------------------
+# 9. Databases, Large Datasets & Logs
+# ------------------------------------------------------------------------------
+*.log
+logs/
+*.sqlite
+*.sqlite3
+dump.rdb
+
+# Raw external datasets exceeding GitHub 100MB file limit
+data/raw/dataset1_store_sales/train.csv
+data/raw/dataset1_store_sales/

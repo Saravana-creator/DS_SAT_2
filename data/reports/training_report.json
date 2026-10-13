@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-10-13T13:59:55.255755",
+  "input_features_file": "data/processed/vantagegro_features.csv",
+  "total_records": 76000,
+  "split_counts": {
+    "train": 53300,
+    "val": 11400,
+    "test": 11300
+  },
+  "split_dates": {
+    "train_range": [
+      "2022-01-01",
+      "2023-06-17"
+    ],
+    "val_range": [
+      "2023-06-18",
+      "2023-10-09"
+    ],
+    "test_range": [
+      "2023-10-10",
+      "2024-01-30"
+    ]
+  },
+  "target": "Demand",
+  "features_count": 50,
+  "candidate_models_evaluated": [
+    "Baseline: Naive Lag 1",
+    "Baseline: 7-Day Moving Average",
+    "Ridge Regression",
+    "HistGradientBoosting",
+    "Random Forest Regressor",
+    "XGBoost Regressor"
+  ],
+  "model_comparison": {
+    "Baseline: Naive Lag 1": {
+      "model_type": "Baseline",
+      "val_metrics": {
+        "MAE": 44.987,
+        "RMSE": 58.388,
+        "R2": -0.4584,
+        "WAPE_pct": 39.37
+      },
+      "test_metrics": {
+        "MAE": 39.572,
+        "RMSE": 51.33,
+        "R2": -0.3093,
+        "WAPE_pct": 39.96
+      }
+    },
+    "Baseline: 7-Day Moving Average": {
+      "model_type": "Baseline",
+      "val_metrics": {
+        "MAE": 34.331,
+        "RMSE": 44.353,
+        "R2": 0.1585,
+        "WAPE_pct": 30.04
+      },
+      "test_metrics": {
+        "MAE": 31.326,
+        "RMSE": 40.468,
+        "R2": 0.1862,
+        "WAPE_pct": 31.63
+      }
+    },
+    "Ridge Regression": {
+      "model_type": "Machine Learning",
+      "training_time_seconds": 0.04,
+      "val_metrics": {
+        "MAE": 24.698,
+        "RMSE": 32.013,
+        "R2": 0.5616,
+        "WAPE_pct": 21.61
+      },
+      "test_metrics": {
+        "MAE": 22.042,
+        "RMSE": 28.531,
+        "R2": 0.5955,
+        "WAPE_pct": 22.26
+      }
+    },
+    "HistGradientBoosting": {
+      "model_type": "Machine Learning",
+      "training_time_seconds": 4.93,
+      "val_metrics": {
+        "MAE": 19.977,
+        "RMSE": 26.908,
+        "R2": 0.6903,
+        "WAPE_pct": 17.48
+      },
+      "test_metrics": {
+        "MAE": 17.841,
+        "RMSE": 23.825,
+        "R2": 0.7179,
+        "WAPE_pct": 18.02
+      }
+    },
+    "Random Forest Regressor": {
+      "model_type": "Machine Learning",
+      "training_time_seconds": 6.6,
+      "val_metrics": {
+        "MAE": 21.233,
+        "RMSE": 28.658,
+        "R2": 0.6487,
+        "WAPE_pct": 18.58
+      },
+      "test_metrics": {
+        "MAE": 18.957,
+        "RMSE": 25.411,
+        "R2": 0.6791,
+        "WAPE_pct": 19.14
+      }
+    },
+    "XGBoost Regressor": {
+      "model_type": "Machine Learning",
+      "training_time_seconds": 0.79,
+      "val_metrics": {
+        "MAE": 20.384,
+        "RMSE": 27.502,
+        "R2": 0.6764,
+        "WAPE_pct": 17.84
+      },
+      "test_metrics": {
+        "MAE": 18.044,
+        "RMSE": 24.165,
+        "R2": 0.7098,
+        "WAPE_pct": 18.22
+      }
+    }
+  },
+  "champion_model": {
+    "name": "HistGradientBoosting",
+    "artifact_path": "models\\vantagegro_best_model.joblib",
+    "test_metrics": {
+      "MAE": 17.841,
+      "RMSE": 23.825,
+      "R2": 0.7179,
+      "WAPE_pct": 18.02
+    },
+    "top_features": {}
+  },
+  "baseline_comparison": {
+    "baseline_wape": 39.96,
+    "champion_wape": 18.02,
+    "error_reduction_pct": 54.9
+  }
+}

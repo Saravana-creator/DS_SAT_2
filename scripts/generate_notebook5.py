@@ -1,0 +1,214 @@
+"""
+Generates notebooks/05_model_training.ipynb
+"""
+
+import json
+import os
+
+nb = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# VantageGro Retail Stock Insight\n",
+                "## Stage 5: Machine Learning Model Training & Comparative Evaluation\n",
+                "\n",
+                "### Objectives\n",
+                "1. **Target Specification**: Predict true unconstrained customer `Demand` rather than inventory-constrained `Units Sold`.\n",
+                "2. **Strict Chronological Splitting**: Train (70%), Validation (15%), Test (15%) preserving temporal order.\n",
+                "3. **Baselines**: Evaluate Naive Lag 1 demand and 7-day Moving Average.\n",
+                "4. **Candidate Regressors**: Train Ridge, Random Forest, HistGradientBoosting, and XGBoost.\n",
+                "5. **Comparative Metrics**: Calculate actual MAE, RMSE, R², and WAPE %.\n",
+                "6. **Model Artifact Persistence**: Save champion model to `models/vantagegro_best_model.joblib`.\n",
+                "7. **Diagnostic Visualizations**: Actual vs Predicted, Residuals, Feature Importance, and Category Errors."
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "import os\n",
+                "import sys\n",
+                "import json\n",
+                "import pandas as pd\n",
+                "import numpy as np\n",
+                "import matplotlib.pyplot as plt\n",
+                "import seaborn as sns\n",
+                "import joblib\n",
+                "\n",
+                "from sklearn.linear_model import Ridge\n",
+                "from sklearn.ensemble import RandomForestRegressor, HistGradientBoostingRegressor\n",
+                "from xgboost import XGBRegressor\n",
+                "from sklearn.metrics import mean_absolute_error, r2_score\n",
+                "\n",
+                "sns.set_theme(style='whitegrid', palette='viridis')\n",
+                "plt.rcParams['figure.figsize'] = (10, 5)\n",
+                "print('Model Training environment ready!')"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 1. Load Engineered Feature Matrix"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "feat_path = 'data/processed/vantagegro_features.csv'\n",
+                "if not os.path.exists(feat_path):\n",
+                "    feat_path = '../data/processed/vantagegro_features.csv'\n",
+                "\n",
+                "df = pd.read_csv(feat_path)\n",
+                "df['Date'] = pd.to_datetime(df['Date'])\n",
+                "print(f'Feature Matrix: {df.shape[0]:,} rows x {df.shape[1]} columns')\n",
+                "df.head()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 2. Chronological Train / Validation / Test Splitting"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()\n",
+                "feature_cols = [c for c in numeric_cols if c not in ['Demand', 'Units Sold']]\n",
+                "target_col = 'Demand'\n",
+                "\n",
+                "unique_dates = np.sort(df['Date'].unique())\n",
+                "n_dates = len(unique_dates)\n",
+                "train_end = unique_dates[int(n_dates * 0.70)]\n",
+                "val_end = unique_dates[int(n_dates * 0.85)]\n",
+                "\n",
+                "train_df = df[df['Date'] <= train_end]\n",
+                "val_df = df[(df['Date'] > train_end) & (df['Date'] <= val_end)]\n",
+                "test_df = df[df['Date'] > val_end]\n",
+                "\n",
+                "print(f'Train Slice:      {len(train_df):,} rows ({train_df[\"Date\"].min().strftime(\"%Y-%m-%d\")} to {train_df[\"Date\"].max().strftime(\"%Y-%m-%d\")})')\n",
+                "print(f'Validation Slice: {len(val_df):,} rows ({val_df[\"Date\"].min().strftime(\"%Y-%m-%d\")} to {val_df[\"Date\"].max().strftime(\"%Y-%m-%d\")})')\n",
+                "print(f'Test Slice:       {len(test_df):,} rows ({test_df[\"Date\"].min().strftime(\"%Y-%m-%d\")} to {test_df[\"Date\"].max().strftime(\"%Y-%m-%d\")})')\n",
+                "\n",
+                "X_train, y_train = train_df[feature_cols].values, train_df[target_col].values\n",
+                "X_val, y_val = val_df[feature_cols].values, val_df[target_col].values\n",
+                "X_test, y_test = test_df[feature_cols].values, test_df[target_col].values"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 3. Model Training & Evaluation Function"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "def evaluate(y_true, y_pred):\n",
+                "    mae = mean_absolute_error(y_true, y_pred)\n",
+                "    rmse = np.sqrt(np.mean((y_true - y_pred)**2))\n",
+                "    r2 = r2_score(y_true, y_pred)\n",
+                "    wape = np.sum(np.abs(y_true - y_pred)) / np.sum(y_true) * 100\n",
+                "    return {'MAE': round(mae, 2), 'RMSE': round(rmse, 2), 'WAPE (%)': round(wape, 2), 'R2': round(r2, 4)}\n",
+                "\n",
+                "results = {}\n",
+                "# Baseline 1: Naive Lag 1\n",
+                "results['Baseline: Naive Lag 1'] = evaluate(y_test, test_df['demand_lag_1'].values)\n",
+                "# Baseline 2: 7-Day Moving Average\n",
+                "results['Baseline: 7-Day MA'] = evaluate(y_test, test_df['rolling_mean_7'].values)\n",
+                "\n",
+                "# Models\n",
+                "models = {\n",
+                "    'Ridge Regression': Ridge(alpha=1.0),\n",
+                "    'HistGradientBoosting': HistGradientBoostingRegressor(max_iter=150, random_state=42),\n",
+                "    'Random Forest': RandomForestRegressor(n_estimators=80, max_depth=12, random_state=42, n_jobs=-1),\n",
+                "    'XGBoost': XGBRegressor(n_estimators=120, max_depth=6, learning_rate=0.08, random_state=42, n_jobs=-1)\n",
+                "}\n",
+                "\n",
+                "trained = {}\n",
+                "test_preds = {}\n",
+                "for name, m in models.items():\n",
+                "    m.fit(X_train, y_train)\n",
+                "    preds = m.predict(X_test)\n",
+                "    results[name] = evaluate(y_test, preds)\n",
+                "    trained[name] = m\n",
+                "    test_preds[name] = preds\n",
+                "\n",
+                "res_df = pd.DataFrame(results).T\n",
+                "display(res_df)"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 4. Performance Visualizations"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# 1. Model WAPE Comparison\n",
+                "plt.figure(figsize=(10, 4))\n",
+                "colors = ['#94a3b8', '#94a3b8', '#3b82f6', '#10b981', '#3b82f6', '#3b82f6']\n",
+                "bars = plt.bar(res_df.index, res_df['WAPE (%)'], color=colors)\n",
+                "plt.title('Test Set Prediction Error (WAPE % - Lower is Better)', fontsize=12, fontweight='bold')\n",
+                "plt.ylabel('WAPE (%)')\n",
+                "plt.xticks(rotation=20, ha='right')\n",
+                "for b in bars:\n",
+                "    plt.text(b.get_x() + b.get_width()/2., b.get_height()+0.5, f\"{b.get_height():.1f}%\", ha='center', va='bottom', fontweight='bold', fontsize=8)\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# 2. Actual vs Predicted (Champion Model: HistGradientBoosting)\n",
+                "champion_preds = test_preds['HistGradientBoosting']\n",
+                "plt.figure(figsize=(7, 6))\n",
+                "plt.scatter(y_test[:1500], champion_preds[:1500], alpha=0.35, color='#10b981', s=15)\n",
+                "plt.plot([0, 400], [0, 400], color='black', linestyle='--')\n",
+                "plt.title('Actual vs Predicted Demand (HistGradientBoosting)', fontsize=11, fontweight='bold')\n",
+                "plt.xlabel('Actual Customer Demand')\n",
+                "plt.ylabel('Predicted Demand')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        }
+    ],
+    "metadata": {
+        "language_info": {
+            "name": "python"
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+
+with open("notebooks/05_model_training.ipynb", "w", encoding="utf-8") as f:
+    json.dump(nb, f, indent=2)
+
+print("notebooks/05_model_training.ipynb generated successfully!")

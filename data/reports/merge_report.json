@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-10-13T12:02:56.714547",
+  "primary_source_file": "data/raw/dataset2_retail_inventory/sales_data.csv",
+  "primary_source_filename": "sales_data.csv",
+  "primary_row_count": 76000,
+  "primary_column_count": 16,
+  "dataset1_directory": "data/raw/dataset1_store_sales",
+  "dataset1_records_per_file": {
+    "oil.csv": 1218,
+    "holidays_events.csv": 350,
+    "transactions.csv": 83488,
+    "train.csv": 3000888
+  },
+  "dataset1_files_aggregated": [
+    "oil.csv",
+    "holidays_events.csv",
+    "transactions.csv",
+    "train.csv"
+  ],
+  "aggregation_rules": {
+    "oil.csv": "Daily oil price (dcoilwtico), deduplicated, forward-filled",
+    "holidays_events.csv": "Daily event count, national holiday flag",
+    "transactions.csv": "Sum of store transactions, mean transactions across reporting stores",
+    "train.csv": "Total market sales, total promotions, unique product families count"
+  },
+  "join_key": "Date (normalized ISO YYYY-MM-DD)",
+  "join_type": "left outer join (Primary -> Date-Aggregated External)",
+  "overlap_analysis": {
+    "primary_date_min": "2022-01-01",
+    "primary_date_max": "2024-01-30",
+    "primary_unique_dates": 760,
+    "external_date_min": "2012-03-02",
+    "external_date_max": "2017-12-26",
+    "external_unique_dates": 1755,
+    "overlapping_dates_count": 0,
+    "date_range_overlap_days": 0,
+    "merge_match_rate_pct": 0.0,
+    "unmatched_primary_dates": 760,
+    "is_chronologically_overlapping": false
+  },
+  "missing_external_rates": {
+    "ext_oil_price": 100.0,
+    "ext_holiday_event_count": 100.0,
+    "ext_is_national_holiday": 100.0,
+    "ext_total_transactions": 100.0,
+    "ext_avg_store_transactions": 100.0,
+    "ext_total_sales_market": 100.0,
+    "ext_total_onpromotion_market": 100.0,
+    "ext_product_families_count": 100.0
+  },
+  "feature_suitability_decision": "EXTERNAL FEATURES UNRETAINABLE FOR MODELING: Dataset 1 (Store Sales) covers dates 2012-03-02 to 2017-12-26, whereas Primary Dataset 2 (VantageGro Retail Inventory) covers dates 2022-01-01 to 2024-01-30. Because there is 0.0% date range overlap, all merged external features contain 100.0% missing values. Per specification section 3: 'If the external features are unsuitable, retain the primary dataset without them and document the reason.' Therefore, the cleaned production dataset retains the primary inventory dataset features without 100% NaN external columns, avoiding data distortion and leakage.",
+  "dropped_unsuitable_external_columns": [
+    "ext_oil_price",
+    "ext_holiday_event_count",
+    "ext_is_national_holiday",
+    "ext_total_transactions",
+    "ext_avg_store_transactions",
+    "ext_total_sales_market",
+    "ext_total_onpromotion_market",
+    "ext_product_families_count"
+  ],
+  "retained_columns": [
+    "Date",
+    "Store ID",
+    "Product ID",
+    "Category",
+    "Region",
+    "Inventory Level",
+    "Units Sold",
+    "Units Ordered",
+    "Price",
+    "Discount",
+    "Weather Condition",
+    "Promotion",
+    "Competitor Pricing",
+    "Seasonality",
+    "Epidemic",
+    "Demand"
+  ],
+  "final_output_file": "data/processed\\vantagegro_merged_raw.csv",
+  "final_row_count": 76000,
+  "final_column_count": 16,
+  "duplicate_rows_full": 0,
+  "duplicate_business_keys": 0,
+  "warnings_and_limitations": [
+    "Dataset 1 (Store Sales Forecasting) represents retail operations in Ecuador (2012-2017) and was strictly aggregated at daily level.",
+    "Dataset 2 (Retail Store Inventory) represents multi-region store operations (2022-2024).",
+    "There is 0.0% date overlap between the two datasets (a 4-year gap between 2017 and 2022).",
+    "Merging external features into Dataset 2 produces 100% NaN for all external columns; retaining them in downstream ML would cause severe data leakage or require artificial imputation that distorts real distributions.",
+    "Per the master prompt instructions, the primary dataset is preserved intact for robust demand forecasting while documenting the complete external aggregation pipeline and audit."
+  ]
+}

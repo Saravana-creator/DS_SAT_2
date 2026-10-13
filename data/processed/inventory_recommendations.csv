@@ -1,0 +1,101 @@
+Store ID,Product ID,Category,Current Inventory,Forecast 14d Demand,Avg Daily Demand,Safety Stock,Reorder Point,Target Stock Level,Suggested Reorder Qty,Days of Supply,Risk Category,Review Priority,Risk Explanation
+S001,P0001,Electronics,383,1251.9,89.42,4,272,898,515,4.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.3 days) is balanced and within target buffer.
+S001,P0002,Clothing,136,1747.9,124.85,4,378,1252,1116,1.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (136) is below demand during lead time (374 units). Stockout will occur before delivery arrives.
+S001,P0003,Clothing,434,1581.7,112.98,16,355,1146,712,3.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.8 days) is balanced and within target buffer.
+S001,P0004,Electronics,241,1334.7,95.34,7,293,960,719,2.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (241) is below demand during lead time (286 units). Stockout will occur before delivery arrives.
+S001,P0005,Groceries,946,1498.5,107.03,12,334,1083,137,8.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (8.8 days) is balanced and within target buffer.
+S001,P0006,Toys,436,1453.1,103.8,3,315,1041,605,4.2,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.2 days) is balanced and within target buffer.
+S001,P0007,Groceries,476,1514.2,108.15,7,331,1088,612,4.4,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.4 days) is balanced and within target buffer.
+S001,P0008,Electronics,162,929.8,66.42,9,208,673,511,2.4,CRITICAL STOCKOUT RISK,HIGH,Current inventory (162) is below demand during lead time (199 units). Stockout will occur before delivery arrives.
+S001,P0009,Clothing,128,1274.1,91.01,15,288,925,797,1.4,CRITICAL STOCKOUT RISK,HIGH,Current inventory (128) is below demand during lead time (273 units). Stockout will occur before delivery arrives.
+S001,P0010,Furniture,518,1034.5,73.89,4,225,743,225,7.0,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (7.0 days) is balanced and within target buffer.
+S001,P0011,Furniture,204,1065.5,76.11,4,232,765,561,2.7,CRITICAL STOCKOUT RISK,HIGH,Current inventory (204) is below demand during lead time (228 units). Stockout will occur before delivery arrives.
+S001,P0012,Groceries,396,1525.5,108.96,6,333,1095,699,3.6,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.6 days) is balanced and within target buffer.
+S001,P0013,Toys,91,1966.2,140.44,10,431,1415,1324,0.6,CRITICAL STOCKOUT RISK,HIGH,Current inventory (91) is below demand during lead time (421 units). Stockout will occur before delivery arrives.
+S001,P0014,Groceries,660,1526.6,109.04,5,332,1096,436,6.1,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (6.1 days) is balanced and within target buffer.
+S001,P0015,Toys,80,1170.5,83.61,7,258,843,763,1.0,CRITICAL STOCKOUT RISK,HIGH,Current inventory (80) is below demand during lead time (250 units). Stockout will occur before delivery arrives.
+S001,P0016,Groceries,225,1309.3,93.52,8,289,943,718,2.4,CRITICAL STOCKOUT RISK,HIGH,Current inventory (225) is below demand during lead time (280 units). Stockout will occur before delivery arrives.
+S001,P0017,Toys,186,1046.9,74.78,8,232,756,570,2.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (186) is below demand during lead time (224 units). Stockout will occur before delivery arrives.
+S001,P0018,Groceries,130,1030.9,73.64,15,236,752,622,1.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (130) is below demand during lead time (220 units). Stockout will occur before delivery arrives.
+S001,P0019,Furniture,110,916.7,65.48,3,200,658,548,1.7,CRITICAL STOCKOUT RISK,HIGH,Current inventory (110) is below demand during lead time (196 units). Stockout will occur before delivery arrives.
+S001,P0020,Furniture,333,1222.9,87.35,5,267,879,546,3.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.8 days) is balanced and within target buffer.
+S002,P0001,Groceries,569,1462.4,104.45,5,319,1050,481,5.4,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.4 days) is balanced and within target buffer.
+S002,P0002,Toys,515,1359.2,97.09,8,299,979,464,5.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.3 days) is balanced and within target buffer.
+S002,P0003,Groceries,388,1426.6,101.9,4,310,1023,635,3.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.8 days) is balanced and within target buffer.
+S002,P0004,Groceries,129,1130.6,80.76,17,259,824,695,1.6,CRITICAL STOCKOUT RISK,HIGH,Current inventory (129) is below demand during lead time (242 units). Stockout will occur before delivery arrives.
+S002,P0005,Electronics,552,2359.8,168.56,27,533,1713,1161,3.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.3 days) is balanced and within target buffer.
+S002,P0006,Clothing,98,1723.4,123.1,4,373,1235,1137,0.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (98) is below demand during lead time (369 units). Stockout will occur before delivery arrives.
+S002,P0007,Toys,414,1332.1,95.15,8,293,959,545,4.4,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.4 days) is balanced and within target buffer.
+S002,P0008,Groceries,85,1529.4,109.25,3,331,1096,1011,0.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (85) is below demand during lead time (327 units). Stockout will occur before delivery arrives.
+S002,P0009,Groceries,153,1121.0,80.07,10,250,811,658,1.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (153) is below demand during lead time (240 units). Stockout will occur before delivery arrives.
+S002,P0010,Groceries,143,1499.7,107.12,3,325,1075,932,1.3,CRITICAL STOCKOUT RISK,HIGH,Current inventory (143) is below demand during lead time (321 units). Stockout will occur before delivery arrives.
+S002,P0011,Groceries,73,1299.8,92.84,7,286,936,863,0.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (73) is below demand during lead time (278 units). Stockout will occur before delivery arrives.
+S002,P0012,Electronics,423,1760.6,125.75,13,390,1271,848,3.4,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.4 days) is balanced and within target buffer.
+S002,P0013,Groceries,125,1392.5,99.46,6,304,1001,876,1.3,CRITICAL STOCKOUT RISK,HIGH,Current inventory (125) is below demand during lead time (298 units). Stockout will occur before delivery arrives.
+S002,P0014,Electronics,676,1535.8,109.7,3,332,1100,424,6.2,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (6.2 days) is balanced and within target buffer.
+S002,P0015,Clothing,1039,1559.0,111.36,7,341,1121,82,9.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (9.3 days) is balanced and within target buffer.
+S002,P0016,Clothing,88,1186.5,84.75,12,266,859,771,1.0,CRITICAL STOCKOUT RISK,HIGH,Current inventory (88) is below demand during lead time (254 units). Stockout will occur before delivery arrives.
+S002,P0017,Toys,204,1100.4,78.6,5,241,791,587,2.6,CRITICAL STOCKOUT RISK,HIGH,Current inventory (204) is below demand during lead time (235 units). Stockout will occur before delivery arrives.
+S002,P0018,Clothing,61,2200.6,157.18,6,477,1577,1516,0.4,CRITICAL STOCKOUT RISK,HIGH,Current inventory (61) is below demand during lead time (471 units). Stockout will occur before delivery arrives.
+S002,P0019,Clothing,339,1418.0,101.28,7,311,1020,681,3.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.3 days) is balanced and within target buffer.
+S002,P0020,Furniture,332,1138.3,81.31,5,249,818,486,4.1,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.1 days) is balanced and within target buffer.
+S003,P0001,Toys,207,965.3,68.95,3,210,693,486,3.0,HIGH STOCKOUT RISK,HIGH,Current inventory (207) is below reorder point (209 units). Safety stock threshold breached.
+S003,P0002,Groceries,327,1410.9,100.78,4,306,1011,684,3.2,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.2 days) is balanced and within target buffer.
+S003,P0003,Electronics,95,1620.0,115.71,5,352,1162,1067,0.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (95) is below demand during lead time (347 units). Stockout will occur before delivery arrives.
+S003,P0004,Groceries,552,1463.8,104.56,6,319,1051,499,5.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.3 days) is balanced and within target buffer.
+S003,P0005,Toys,782,1480.9,105.78,8,326,1066,284,7.4,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (7.4 days) is balanced and within target buffer.
+S003,P0006,Toys,156,2370.8,169.35,15,523,1708,1552,0.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (156) is below demand during lead time (508 units). Stockout will occur before delivery arrives.
+S003,P0007,Groceries,187,1334.9,95.35,7,293,961,774,2.0,CRITICAL STOCKOUT RISK,HIGH,Current inventory (187) is below demand during lead time (286 units). Stockout will occur before delivery arrives.
+S003,P0008,Clothing,170,1543.4,110.24,10,341,1112,942,1.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (170) is below demand during lead time (330 units). Stockout will occur before delivery arrives.
+S003,P0009,Groceries,123,2249.9,160.71,6,489,1613,1490,0.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (123) is below demand during lead time (482 units). Stockout will occur before delivery arrives.
+S003,P0010,Groceries,111,1962.4,140.17,8,429,1410,1299,0.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (111) is below demand during lead time (420 units). Stockout will occur before delivery arrives.
+S003,P0011,Electronics,143,2066.3,147.59,22,464,1497,1354,1.0,CRITICAL STOCKOUT RISK,HIGH,Current inventory (143) is below demand during lead time (442 units). Stockout will occur before delivery arrives.
+S003,P0012,Furniture,286,781.0,55.78,3,171,561,275,5.1,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.1 days) is balanced and within target buffer.
+S003,P0013,Groceries,781,1638.1,117.01,5,356,1175,394,6.7,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (6.7 days) is balanced and within target buffer.
+S003,P0014,Groceries,350,2281.1,162.94,11,500,1640,1290,2.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (350) is below demand during lead time (488 units). Stockout will occur before delivery arrives.
+S003,P0015,Groceries,413,1939.3,138.52,4,420,1390,977,3.0,CRITICAL STOCKOUT RISK,HIGH,Current inventory (413) is below demand during lead time (415 units). Stockout will occur before delivery arrives.
+S003,P0016,Electronics,161,1181.3,84.38,4,257,847,686,1.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (161) is below demand during lead time (253 units). Stockout will occur before delivery arrives.
+S003,P0017,Furniture,239,1256.7,89.76,6,275,904,665,2.7,CRITICAL STOCKOUT RISK,HIGH,Current inventory (239) is below demand during lead time (269 units). Stockout will occur before delivery arrives.
+S003,P0018,Furniture,652,1286.1,91.87,3,279,922,270,7.1,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (7.1 days) is balanced and within target buffer.
+S003,P0019,Groceries,108,2064.7,147.48,7,450,1482,1374,0.7,CRITICAL STOCKOUT RISK,HIGH,Current inventory (108) is below demand during lead time (442 units). Stockout will occur before delivery arrives.
+S003,P0020,Clothing,113,1073.0,76.64,12,241,778,665,1.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (113) is below demand during lead time (229 units). Stockout will occur before delivery arrives.
+S004,P0001,Groceries,342,1524.5,108.89,6,332,1095,753,3.1,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.1 days) is balanced and within target buffer.
+S004,P0002,Groceries,273,1319.3,94.23,7,290,949,676,2.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (273) is below demand during lead time (282 units). Stockout will occur before delivery arrives.
+S004,P0003,Furniture,153,981.8,70.13,5,216,707,554,2.2,CRITICAL STOCKOUT RISK,HIGH,Current inventory (153) is below demand during lead time (210 units). Stockout will occur before delivery arrives.
+S004,P0004,Groceries,439,2349.5,167.82,11,515,1690,1251,2.6,CRITICAL STOCKOUT RISK,HIGH,Current inventory (439) is below demand during lead time (503 units). Stockout will occur before delivery arrives.
+S004,P0005,Clothing,184,1189.1,84.94,21,276,871,687,2.2,CRITICAL STOCKOUT RISK,HIGH,Current inventory (184) is below demand during lead time (254 units). Stockout will occur before delivery arrives.
+S004,P0006,Groceries,134,1426.5,101.89,10,316,1029,895,1.3,CRITICAL STOCKOUT RISK,HIGH,Current inventory (134) is below demand during lead time (305 units). Stockout will occur before delivery arrives.
+S004,P0007,Groceries,574,1761.5,125.82,11,388,1269,695,4.6,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.6 days) is balanced and within target buffer.
+S004,P0008,Furniture,92,810.5,57.89,5,179,584,492,1.6,CRITICAL STOCKOUT RISK,HIGH,Current inventory (92) is below demand during lead time (173 units). Stockout will occur before delivery arrives.
+S004,P0009,Clothing,472,1725.1,123.22,9,379,1241,769,3.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (3.8 days) is balanced and within target buffer.
+S004,P0010,Groceries,247,1689.1,120.65,5,367,1211,964,2.0,CRITICAL STOCKOUT RISK,HIGH,Current inventory (247) is below demand during lead time (361 units). Stockout will occur before delivery arrives.
+S004,P0011,Clothing,596,1232.7,88.05,8,272,888,292,6.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (6.8 days) is balanced and within target buffer.
+S004,P0012,Electronics,201,1358.9,97.06,6,297,976,775,2.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (201) is below demand during lead time (291 units). Stockout will occur before delivery arrives.
+S004,P0013,Groceries,389,1212.9,86.63,15,275,881,492,4.5,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.5 days) is balanced and within target buffer.
+S004,P0014,Furniture,379,1135.1,81.08,4,248,815,436,4.7,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (4.7 days) is balanced and within target buffer.
+S004,P0015,Furniture,292,776.3,55.45,3,170,558,266,5.3,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.3 days) is balanced and within target buffer.
+S004,P0016,Furniture,153,849.2,60.66,3,185,610,457,2.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (153) is below demand during lead time (181 units). Stockout will occur before delivery arrives.
+S004,P0017,Clothing,166,2086.4,149.03,12,460,1503,1337,1.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (166) is below demand during lead time (447 units). Stockout will occur before delivery arrives.
+S004,P0018,Furniture,97,1054.9,75.35,4,230,757,660,1.3,CRITICAL STOCKOUT RISK,HIGH,Current inventory (97) is below demand during lead time (226 units). Stockout will occur before delivery arrives.
+S004,P0019,Clothing,219,1366.8,97.63,14,307,990,771,2.2,CRITICAL STOCKOUT RISK,HIGH,Current inventory (219) is below demand during lead time (292 units). Stockout will occur before delivery arrives.
+S004,P0020,Furniture,79,1567.9,111.99,16,352,1136,1057,0.7,CRITICAL STOCKOUT RISK,HIGH,Current inventory (79) is below demand during lead time (335 units). Stockout will occur before delivery arrives.
+S005,P0001,Groceries,267,1430.0,102.14,8,314,1029,762,2.6,CRITICAL STOCKOUT RISK,HIGH,Current inventory (267) is below demand during lead time (306 units). Stockout will occur before delivery arrives.
+S005,P0002,Electronics,156,2370.6,169.33,31,539,1724,1568,0.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (156) is below demand during lead time (507 units). Stockout will occur before delivery arrives.
+S005,P0003,Toys,212,1284.2,91.73,4,280,922,710,2.3,CRITICAL STOCKOUT RISK,HIGH,Current inventory (212) is below demand during lead time (275 units). Stockout will occur before delivery arrives.
+S005,P0004,Groceries,141,1733.9,123.85,3,375,1242,1101,1.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (141) is below demand during lead time (371 units). Stockout will occur before delivery arrives.
+S005,P0005,Groceries,288,1940.2,138.58,4,420,1390,1102,2.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (288) is below demand during lead time (415 units). Stockout will occur before delivery arrives.
+S005,P0006,Groceries,266,1549.3,110.66,5,337,1112,846,2.4,CRITICAL STOCKOUT RISK,HIGH,Current inventory (266) is below demand during lead time (331 units). Stockout will occur before delivery arrives.
+S005,P0007,Groceries,261,1448.6,103.47,13,324,1048,787,2.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (261) is below demand during lead time (310 units). Stockout will occur before delivery arrives.
+S005,P0008,Groceries,154,1251.8,89.42,16,284,910,756,1.7,CRITICAL STOCKOUT RISK,HIGH,Current inventory (154) is below demand during lead time (268 units). Stockout will occur before delivery arrives.
+S005,P0009,Groceries,136,1784.2,127.44,20,402,1294,1158,1.1,CRITICAL STOCKOUT RISK,HIGH,Current inventory (136) is below demand during lead time (382 units). Stockout will occur before delivery arrives.
+S005,P0010,Groceries,115,1044.7,74.62,4,228,751,636,1.5,CRITICAL STOCKOUT RISK,HIGH,Current inventory (115) is below demand during lead time (223 units). Stockout will occur before delivery arrives.
+S005,P0011,Electronics,269,1236.5,88.32,5,270,889,620,3.0,HIGH STOCKOUT RISK,HIGH,Current inventory (269) is below reorder point (269 units). Safety stock threshold breached.
+S005,P0012,Furniture,375,906.1,64.72,3,198,651,276,5.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.8 days) is balanced and within target buffer.
+S005,P0013,Groceries,792,1730.1,123.58,4,375,1240,448,6.4,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (6.4 days) is balanced and within target buffer.
+S005,P0014,Furniture,161,1680.0,120.0,15,375,1215,1054,1.3,CRITICAL STOCKOUT RISK,HIGH,Current inventory (161) is below demand during lead time (360 units). Stockout will occur before delivery arrives.
+S005,P0015,Groceries,520,1256.9,89.78,9,278,906,386,5.8,OPTIMAL STOCK LEVEL,LOW,Inventory coverage (5.8 days) is balanced and within target buffer.
+S005,P0016,Toys,233,1133.8,80.99,3,246,813,580,2.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (233) is below demand during lead time (242 units). Stockout will occur before delivery arrives.
+S005,P0017,Toys,137,2135.9,152.56,15,472,1540,1403,0.9,CRITICAL STOCKOUT RISK,HIGH,Current inventory (137) is below demand during lead time (457 units). Stockout will occur before delivery arrives.
+S005,P0018,Clothing,197,1237.2,88.37,15,280,898,701,2.2,CRITICAL STOCKOUT RISK,HIGH,Current inventory (197) is below demand during lead time (265 units). Stockout will occur before delivery arrives.
+S005,P0019,Furniture,125,985.9,70.42,3,215,708,583,1.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (125) is below demand during lead time (211 units). Stockout will occur before delivery arrives.
+S005,P0020,Toys,126,970.2,69.3,3,211,696,570,1.8,CRITICAL STOCKOUT RISK,HIGH,Current inventory (126) is below demand during lead time (207 units). Stockout will occur before delivery arrives.

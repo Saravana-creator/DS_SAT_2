@@ -1,0 +1,344 @@
+"""
+Generates notebooks/06_forecasting_inventory.ipynb
+"""
+
+import json
+import os
+
+nb = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# VantageGro Retail Stock Insight\n",
+                "## Stage 6: Demand Forecasting & Inventory Optimization Engine\n",
+                "\n",
+                "### Objectives\n",
+                "1. **Champion Model Deployment**: Load trained Champion ML model (`HistGradientBoostingRegressor`) with saved feature schema.\n",
+                "2. **Recursive Multi-Step Forecasting**: Project demand 14 days ahead per `(Store ID, Product ID)` series, updating autoregressive lags recursively to avoid future leakage.\n",
+                "3. **What-If Scenario Simulation**: Test impact of planned promotions and price variations on forecasted demand trajectory.\n",
+                "4. **Inventory Optimization Engine**: Formulate and compute Safety Stock ($SS$), Reorder Point ($ROP$), Target Stock Level ($TSL$), and Suggested Reorder Quantity.\n",
+                "5. **Risk Classification**: Categorize each SKU into Critical Stockout Risk, High Stockout Risk, Overstock Risk, or Optimal Stock Level.\n",
+                "6. **Full Fleet Recommendations**: Execute across all 100 store-product series and export prioritized action items to CSV and JSON."
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "import os\n",
+                "import sys\n",
+                "import json\n",
+                "import pandas as pd\n",
+                "import numpy as np\n",
+                "import matplotlib.pyplot as plt\n",
+                "import seaborn as sns\n",
+                "import joblib\n",
+                "from datetime import datetime, timedelta\n",
+                "\n",
+                "sns.set_theme(style='whitegrid', palette='mako')\n",
+                "plt.rcParams['figure.figsize'] = (10, 5)\n",
+                "print('Forecasting & Inventory Optimization environment ready!')"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 1. Load Champion ML Model & Historical Feature Matrix"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "model_bundle = joblib.load('../models/vantagegro_best_model.joblib')\n",
+                "df_feat = pd.read_csv('../data/processed/vantagegro_features.csv')\n",
+                "\n",
+                "model = model_bundle['model']\n",
+                "feature_cols = model_bundle['feature_columns']\n",
+                "print(f\"Loaded Champion Model: {model_bundle['model_name']}\")\n",
+                "print(f\"Number of Features: {len(feature_cols)}\")\n",
+                "print(f\"Features Matrix Shape: {df_feat.shape}\")\n",
+                "print(f\"Date Range: {df_feat['Date'].min()} to {df_feat['Date'].max()}\")"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 2. Multi-Step Recursive Forecasting Function (Zero Future Leakage)"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "def recursive_forecast(\n",
+                "    store_id, product_id, features_df, model_bundle, horizon_days=14, promo_scenario=None\n",
+                "):\n",
+                "    model = model_bundle['model']\n",
+                "    cols = model_bundle['feature_columns']\n",
+                "    series = features_df[(features_df['Store ID'] == store_id) & (features_df['Product ID'] == product_id)].copy()\n",
+                "    series['Date_dt'] = pd.to_datetime(series['Date'])\n",
+                "    series = series.sort_values('Date_dt').reset_index(drop=True)\n",
+                "    \n",
+                "    latest = series.iloc[-1]\n",
+                "    base_date = latest['Date_dt']\n",
+                "    past_demands = series['Demand'].tail(35).tolist()\n",
+                "    \n",
+                "    category_val = latest.get('Category', 'Groceries')\n",
+                "    region_val = latest.get('Region', 'North')\n",
+                "    base_price = float(latest.get('Price', 50.0))\n",
+                "    base_comp = float(latest.get('Competitor Pricing', base_price))\n",
+                "    base_disc = float(latest.get('Discount', 5.0))\n",
+                "    \n",
+                "    steps = []\n",
+                "    for h in range(1, horizon_days + 1):\n",
+                "        step_date = base_date + timedelta(days=h)\n",
+                "        promo_val = promo_scenario if promo_scenario is not None else int(latest.get('Promotion', 0))\n",
+                "        \n",
+                "        feat_dict = {\n",
+                "            'cal_year': step_date.year, 'cal_month': step_date.month, 'cal_day': step_date.day,\n",
+                "            'cal_day_of_week': step_date.dayofweek, 'cal_is_weekend': int(step_date.dayofweek in [5, 6]),\n",
+                "            'cal_week_of_year': int(step_date.isocalendar().week),\n",
+                "            'cal_is_month_start': int(step_date.is_month_start), 'cal_is_month_end': int(step_date.is_month_end),\n",
+                "            'cal_quarter': step_date.quarter,\n",
+                "            'sin_month': round(np.sin(2 * np.pi * step_date.month / 12), 4),\n",
+                "            'cos_month': round(np.cos(2 * np.pi * step_date.month / 12), 4),\n",
+                "            'sin_day_of_week': round(np.sin(2 * np.pi * step_date.dayofweek / 7), 4),\n",
+                "            'cos_day_of_week': round(np.cos(2 * np.pi * step_date.dayofweek / 7), 4),\n",
+                "            'demand_lag_1': past_demands[-1],\n",
+                "            'demand_lag_7': past_demands[-7] if len(past_demands) >= 7 else past_demands[-1],\n",
+                "            'demand_lag_14': past_demands[-14] if len(past_demands) >= 14 else past_demands[-1],\n",
+                "            'demand_lag_28': past_demands[-28] if len(past_demands) >= 28 else past_demands[-1],\n",
+                "            'rolling_mean_7': round(float(np.mean(past_demands[-7:])), 2),\n",
+                "            'rolling_mean_14': round(float(np.mean(past_demands[-14:])), 2),\n",
+                "            'rolling_mean_28': round(float(np.mean(past_demands[-28:])), 2),\n",
+                "            'rolling_std_7': round(float(np.std(past_demands[-7:])), 2),\n",
+                "            'rolling_std_14': round(float(np.std(past_demands[-14:])), 2),\n",
+                "            'recent_demand_trend': round(np.mean(past_demands[-7:]) - np.mean(past_demands[-28:]), 2),\n",
+                "            'Price': base_price, 'Discount': base_disc, 'Promotion': promo_val,\n",
+                "            'Competitor Pricing': base_comp,\n",
+                "            'price_ratio': round(base_price / base_comp, 3) if base_comp > 0 else 1.0,\n",
+                "            'price_diff': round(base_price - base_comp, 2),\n",
+                "            'discounted_price': round(base_price * (1 - base_disc / 100), 2),\n",
+                "            'Inventory Level': float(latest.get('Inventory Level', 100.0)),\n",
+                "            'Units Ordered': float(latest.get('Units Ordered', 0.0)),\n",
+                "            'Epidemic': int(latest.get('Epidemic', 0))\n",
+                "        }\n",
+                "        for c in cols:\n",
+                "            if c not in feat_dict:\n",
+                "                if c.startswith('Category_'):\n",
+                "                    feat_dict[c] = int(c == f'Category_{category_val}')\n",
+                "                elif c.startswith('Region_'):\n",
+                "                    feat_dict[c] = int(c == f'Region_{region_val}')\n",
+                "                elif c.startswith('Weather Condition_'):\n",
+                "                    feat_dict[c] = int(c == 'Weather Condition_Sunny')\n",
+                "                else:\n",
+                "                    feat_dict[c] = 0\n",
+                "        vec = [feat_dict.get(c, 0.0) for c in cols]\n",
+                "        pred = max(0.0, round(float(model.predict([vec])[0]), 2))\n",
+                "        past_demands.append(pred)\n",
+                "        steps.append({'step': h, 'date': step_date.strftime('%Y-%m-%d'), 'predicted_demand': pred, 'promotion': promo_val})\n",
+                "    return steps\n",
+                "\n",
+                "# Sample forecast for S001, P0001\n",
+                "s1_fc = recursive_forecast('S001', 'P0001', df_feat, model_bundle, horizon_days=14)\n",
+                "print('Sample 14-Day Forecast (Store S001, SKU P0001):')\n",
+                "print(pd.DataFrame(s1_fc).head(7))"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 3. Scenario Simulation: Promotion Impact Analysis\n",
+                "Compare projected demand trajectory with vs. without promotion."
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "fc_baseline = recursive_forecast('S001', 'P0001', df_feat, model_bundle, horizon_days=14, promo_scenario=0)\n",
+                "fc_promo = recursive_forecast('S001', 'P0001', df_feat, model_bundle, horizon_days=14, promo_scenario=1)\n",
+                "\n",
+                "df_scenarios = pd.DataFrame({\n",
+                "    'Date': [s['date'] for s in fc_baseline],\n",
+                "    'Baseline Demand (No Promo)': [s['predicted_demand'] for s in fc_baseline],\n",
+                "    'Simulated Promo Demand': [s['predicted_demand'] for s in fc_promo]\n",
+                "})\n",
+                "\n",
+                "plt.figure(figsize=(10, 4.5))\n",
+                "plt.plot(df_scenarios['Date'], df_scenarios['Baseline Demand (No Promo)'], marker='o', label='Baseline (No Promo)', color='#3b82f6')\n",
+                "plt.plot(df_scenarios['Date'], df_scenarios['Simulated Promo Demand'], marker='s', label='Scenario: Promotion Active', color='#ef4444', linestyle='--')\n",
+                "plt.title('What-If Scenario Simulation: Promotional Uplift Trajectory (Store S001, P0001)', fontweight='bold')\n",
+                "plt.xlabel('Date')\n",
+                "plt.ylabel('Forecasted Daily Demand')\n",
+                "plt.xticks(rotation=30, ha='right')\n",
+                "plt.legend()\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 4. Inventory Optimization Engine Formulation\n",
+                "- **Lead Time ($L$)**: 3 days\n",
+                "- **Service Level ($z$)**: 1.65 (corresponding to 95.0% non-stockout probability)\n",
+                "- **Review Period ($R$)**: 7 days\n",
+                "- **Demand During Lead Time ($DDLT$)**: $\\bar{d} \\times L$\n",
+                "- **Safety Stock ($SS$)**: $z \\times \\sigma_d \\times \\sqrt{L}$\n",
+                "- **Reorder Point ($ROP$)**: $DDLT + SS$\n",
+                "- **Target Stock Level ($TSL$)**: $\\bar{d} \\times (L + R) + SS$\n",
+                "- **Suggested Reorder Qty**: $\\max(0, TSL - \\text{Current Inventory})$\n",
+                "- **Days of Supply (DoS)**: $\\frac{\\text{Current Inventory}}{\\bar{d}}$"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Load generated full inventory recommendations\n",
+                "df_recs = pd.read_csv('../data/processed/inventory_recommendations.csv')\n",
+                "with open('../data/reports/forecast_and_inventory_report.json') as f:\n",
+                "    report_meta = json.load(f)\n",
+                "\n",
+                "print(f\"Total Series Evaluated: {len(df_recs)}\")\n",
+                "print(f\"Risk Breakdown:\")\n",
+                "for k, v in report_meta['risk_breakdown'].items():\n",
+                "    print(f\"  - {k}: {v} SKUs ({v/len(df_recs)*100:.1f}%)\")\n",
+                "print(f\"\\nTotal Replenishment Units Required: {report_meta['total_suggested_reorder_units']:,} units\")\n",
+                "df_recs.head(5)"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 5. High-Risk Replenishment Orders (Action Items)"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "high_priority = df_recs[df_recs['Review Priority'] == 'HIGH'].sort_values('Suggested Reorder Qty', ascending=False)\n",
+                "print(f\"High Priority Action Items ({len(high_priority)} SKUs):\")\n",
+                "print(high_priority[['Store ID', 'Product ID', 'Category', 'Current Inventory', 'Reorder Point', 'Suggested Reorder Qty', 'Days of Supply', 'Risk Category']].head(10))"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 6. Visualizing Inventory Risk Profile & Diagnostic Charts"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "fig, axes = plt.subplots(1, 2, figsize=(15, 5))\n",
+                "\n",
+                "# Risk Distribution Pie Chart\n",
+                "risk_counts = df_recs['Risk Category'].value_counts()\n",
+                "colors = {'CRITICAL STOCKOUT RISK': '#b91c1c', 'HIGH STOCKOUT RISK': '#ef4444', 'OPTIMAL STOCK LEVEL': '#10b981', 'OVERSTOCK RISK': '#f59e0b'}\n",
+                "axes[0].pie(risk_counts, labels=risk_counts.index, autopct='%1.1f%%', colors=[colors.get(c, '#94a3b8') for c in risk_counts.index], startangle=140)\n",
+                "axes[0].set_title('SKU Risk Distribution Across All Stores', fontweight='bold')\n",
+                "\n",
+                "# Top Reorder Quantities\n",
+                "top_orders = high_priority.head(8)\n",
+                "axes[1].bar(top_orders['Product ID'] + ' (' + top_orders['Store ID'] + ')', top_orders['Suggested Reorder Qty'], color='#b91c1c')\n",
+                "axes[1].set_title('Top 8 Urgent Reorder Orders (Units Required)', fontweight='bold')\n",
+                "axes[1].set_ylabel('Order Quantity (Units)')\n",
+                "axes[1].tick_params(axis='x', rotation=30)\n",
+                "\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 7. Historical Actual Demand + 14-Day Forecast Trajectory"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "s_hist = df_feat[(df_feat['Store ID'] == 'S001') & (df_feat['Product ID'] == 'P0001')].tail(45).copy()\n",
+                "s_hist['Date_dt'] = pd.to_datetime(s_hist['Date'])\n",
+                "\n",
+                "df_fc = pd.DataFrame(s1_fc)\n",
+                "df_fc['Date_dt'] = pd.to_datetime(df_fc['date'])\n",
+                "\n",
+                "plt.figure(figsize=(11, 4.5))\n",
+                "plt.plot(s_hist['Date_dt'], s_hist['Demand'], label='Historical Actual Demand', color='#3b82f6', linewidth=2)\n",
+                "plt.plot(df_fc['Date_dt'], df_fc['predicted_demand'], label='14-Day Recursive Forecast', color='#10b981', linewidth=2.5, linestyle='--', marker='o')\n",
+                "plt.title('Historical Demand + 14-Day ML Forecast (Store S001, Product P0001)', fontweight='bold')\n",
+                "plt.xlabel('Date')\n",
+                "plt.ylabel('Demand Units')\n",
+                "plt.legend()\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### Summary of Stage 6 Artifacts\n",
+                "- Recommendations Table: `data/processed/inventory_recommendations.csv` (100 series)\n",
+                "- Detailed Report: `data/reports/forecast_and_inventory_report.json`\n",
+                "- Visualizations: `data/reports/recommendation_visualizations/` (8 interactive HTML Plotly + PNG + JSON charts)\n",
+                "- Ready for Stage 7: MongoDB Local Database Ingestion & Persistence."
+            ]
+        }
+    ],
+    "metadata": {
+        "kernelspec": {
+            "display_name": "Python 3",
+            "language": "python",
+            "name": "python3"
+        },
+        "language_info": {
+            "codemirror_mode": {"name": "ipython", "version": 3},
+            "file_extension": ".py",
+            "mimetype": "text/x-python",
+            "name": "python",
+            "nbformat": 4,
+            "nbformat_minor": 2
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+
+out_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "notebooks", "06_forecasting_inventory.ipynb"))
+with open(out_path, "w", encoding="utf-8") as f:
+    json.dump(nb, f, indent=2)
+
+print(f"Generated {out_path} successfully!")

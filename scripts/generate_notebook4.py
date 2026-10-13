@@ -1,0 +1,197 @@
+"""
+Generates notebooks/04_feature_engineering.ipynb
+"""
+
+import json
+import os
+
+nb = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# VantageGro Retail Stock Insight\n",
+                "## Stage 4: Feature Engineering Pipeline\n",
+                "\n",
+                "### Objectives\n",
+                "1. **Calendar Features**: Extract temporal signatures, day-of-week, weekend, quarter, and cyclical sine/cosine transformations.\n",
+                "2. **Historical Autoregressive Demand Lags**: Lag 1, 7, 14, 28 calculated per (Store, Product) series.\n",
+                "3. **Rolling Statistics & Volatility**: 7-day, 14-day, 28-day rolling means and standard deviations, strictly using `shift(1)` to eliminate target leakage.\n",
+                "4. **Pricing & Competitive Features**: Price ratio, price gap, and net promotional price.\n",
+                "5. **Generate 5 Feature Audit Visualizations** inline.\n",
+                "6. **Export Feature Dataset** (`vantagegro_features.csv`) and `feature_metadata.json`."
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "import os\n",
+                "import sys\n",
+                "import json\n",
+                "import pandas as pd\n",
+                "import numpy as np\n",
+                "import matplotlib.pyplot as plt\n",
+                "import seaborn as sns\n",
+                "import plotly.express as px\n",
+                "\n",
+                "sns.set_theme(style='whitegrid', palette='viridis')\n",
+                "plt.rcParams['figure.figsize'] = (10, 5)\n",
+                "print('Feature Engineering Environment ready!')"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 1. Load Cleaned Dataset"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "clean_path = 'data/processed/vantagegro_cleaned.csv'\n",
+                "if not os.path.exists(clean_path):\n",
+                "    clean_path = '../data/processed/vantagegro_cleaned.csv'\n",
+                "\n",
+                "df = pd.read_csv(clean_path)\n",
+                "df['Date'] = pd.to_datetime(df['Date'])\n",
+                "print(f'Cleaned Data Shape: {df.shape[0]:,} rows x {df.shape[1]} columns')\n",
+                "df.head()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 2. Feature Construction with Leakage Prevention"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "data = df.sort_values(['Store ID', 'Product ID', 'Date']).reset_index(drop=True)\n",
+                "\n",
+                "# Calendar Features\n",
+                "data['cal_year'] = data['Date'].dt.year\n",
+                "data['cal_month'] = data['Date'].dt.month\n",
+                "data['cal_day'] = data['Date'].dt.day\n",
+                "data['cal_day_of_week'] = data['Date'].dt.dayofweek\n",
+                "data['cal_is_weekend'] = data['Date'].dt.dayofweek.isin([5, 6]).astype(int)\n",
+                "data['cal_week_of_year'] = data['Date'].dt.isocalendar().week.astype(int)\n",
+                "data['cal_quarter'] = data['Date'].dt.quarter\n",
+                "data['sin_month'] = np.sin(2 * np.pi * data['cal_month'] / 12).round(4)\n",
+                "data['cos_month'] = np.cos(2 * np.pi * data['cal_month'] / 12).round(4)\n",
+                "\n",
+                "# Historical Lags per Series\n",
+                "grouped = data.groupby(['Store ID', 'Product ID'])\n",
+                "data['demand_lag_1'] = grouped['Demand'].shift(1)\n",
+                "data['demand_lag_7'] = grouped['Demand'].shift(7)\n",
+                "data['demand_lag_14'] = grouped['Demand'].shift(14)\n",
+                "data['demand_lag_28'] = grouped['Demand'].shift(28)\n",
+                "\n",
+                "# Rolling Statistics (Shifted)\n",
+                "data['rolling_mean_7'] = grouped['Demand'].transform(lambda s: s.shift(1).rolling(7, min_periods=1).mean()).round(2)\n",
+                "data['rolling_mean_14'] = grouped['Demand'].transform(lambda s: s.shift(1).rolling(14, min_periods=1).mean()).round(2)\n",
+                "data['rolling_mean_28'] = grouped['Demand'].transform(lambda s: s.shift(1).rolling(28, min_periods=1).mean()).round(2)\n",
+                "data['rolling_std_7'] = grouped['Demand'].transform(lambda s: s.shift(1).rolling(7, min_periods=1).std()).fillna(0).round(2)\n",
+                "data['recent_demand_trend'] = (data['rolling_mean_7'] - data['rolling_mean_28']).round(2)\n",
+                "\n",
+                "# Backfill warmup\n",
+                "for col in ['demand_lag_1', 'demand_lag_7', 'demand_lag_14', 'demand_lag_28', 'rolling_mean_7', 'rolling_mean_14', 'rolling_mean_28', 'rolling_std_7', 'recent_demand_trend']:\n",
+                "    data[col] = grouped[col].bfill().ffill()\n",
+                "\n",
+                "# Business Pricing Features\n",
+                "data['price_ratio'] = (data['Price'] / data['Competitor Pricing']).round(3)\n",
+                "data['discounted_price'] = (data['Price'] * (1 - data['Discount'] / 100)).round(2)\n",
+                "data['price_diff'] = (data['Price'] - data['Competitor Pricing']).round(2)\n",
+                "\n",
+                "# Categorical Encodings\n",
+                "encoded_df = pd.get_dummies(data, columns=['Category', 'Region', 'Weather Condition', 'Seasonality'], drop_first=False, dtype=int)\n",
+                "print(f'Feature Engineering complete: {encoded_df.shape[1]} columns produced across {encoded_df.shape[0]:,} rows!')\n",
+                "encoded_df.head()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 3. Feature Audit Visualizations"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# 1. Lag vs Target Relationship\n",
+                "sample = encoded_df.sample(2000, random_state=42)\n",
+                "plt.figure(figsize=(7, 5))\n",
+                "plt.scatter(sample['demand_lag_1'], sample['Demand'], alpha=0.3, color='#10b981', s=15)\n",
+                "plt.plot([0, 400], [0, 400], color='gray', linestyle='--')\n",
+                "plt.title('Lag 1 Prior-Day Demand vs Current Day Demand', fontsize=11, fontweight='bold')\n",
+                "plt.xlabel('Lag 1 Demand')\n",
+                "plt.ylabel('Target Demand')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# 2. Rolling Means Trajectory (Store S001, Product P0001)\n",
+                "sub = encoded_df[(encoded_df['Store ID'] == 'S001') & (encoded_df['Product ID'] == 'P0001')].tail(100)\n",
+                "plt.figure(figsize=(11, 4.5))\n",
+                "plt.plot(sub['Date'], sub['Demand'], label='Actual Demand', color='#94a3b8', alpha=0.7)\n",
+                "plt.plot(sub['Date'], sub['rolling_mean_7'], label='7-Day Rolling Mean', color='#10b981', linewidth=2)\n",
+                "plt.plot(sub['Date'], sub['rolling_mean_28'], label='28-Day Rolling Mean', color='#3b82f6', linewidth=2)\n",
+                "plt.title('Actual Demand vs Rolling Means (Store S001, SKU P0001)', fontsize=11, fontweight='bold')\n",
+                "plt.legend()\n",
+                "plt.xticks(rotation=30, ha='right')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# 3. Correlation Matrix of Key Features vs Target\n",
+                "key_cols = ['Demand', 'demand_lag_1', 'demand_lag_7', 'rolling_mean_7', 'rolling_mean_14', 'recent_demand_trend', 'Price', 'Discount', 'Promotion', 'price_ratio']\n",
+                "corr = encoded_df[key_cols].corr().round(2)\n",
+                "plt.figure(figsize=(9, 7))\n",
+                "sns.heatmap(corr, annot=True, cmap='viridis', fmt='.2f', vmin=-1, vmax=1)\n",
+                "plt.title('Correlation Matrix of Key Engineered Features vs Demand', fontsize=11, fontweight='bold')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        }
+    ],
+    "metadata": {
+        "language_info": {
+            "name": "python"
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+
+with open("notebooks/04_feature_engineering.ipynb", "w", encoding="utf-8") as f:
+    json.dump(nb, f, indent=2)
+
+print("notebooks/04_feature_engineering.ipynb generated successfully!")

@@ -1,0 +1,2344 @@
+{
+  "category_summary": [
+    {
+      "Category": "Groceries",
+      "total_units_sold": 3127335,
+      "total_demand": 3677684,
+      "avg_daily_demand": 120.97644736842105,
+      "avg_inventory_level": 360.3147697368421,
+      "avg_price": 51.657798684210526,
+      "avg_discount": 9.116118421052631,
+      "product_count": 18,
+      "demand_share_pct": 46.39,
+      "sales_to_demand_ratio": 0.85
+    },
+    {
+      "Category": "Clothing",
+      "total_units_sold": 1150873,
+      "total_demand": 1369456,
+      "avg_daily_demand": 112.61973684210527,
+      "avg_inventory_level": 282.10353618421055,
+      "avg_price": 71.51946957236842,
+      "avg_discount": 9.048108552631579,
+      "product_count": 13,
+      "demand_share_pct": 17.27,
+      "sales_to_demand_ratio": 0.84
+    },
+    {
+      "Category": "Furniture",
+      "total_units_sold": 880654,
+      "total_demand": 1006590,
+      "avg_daily_demand": 73.58114035087719,
+      "avg_inventory_level": 250.07485380116958,
+      "avg_price": 121.50711184210526,
+      "avg_discount": 9.005482456140351,
+      "product_count": 12,
+      "demand_share_pct": 12.7,
+      "sales_to_demand_ratio": 0.875
+    },
+    {
+      "Category": "Toys",
+      "total_units_sold": 834679,
+      "total_demand": 985338,
+      "avg_daily_demand": 92.60695488721805,
+      "avg_inventory_level": 229.11174812030075,
+      "avg_price": 26.913289473684213,
+      "avg_discount": 9.180451127819548,
+      "product_count": 11,
+      "demand_share_pct": 12.43,
+      "sales_to_demand_ratio": 0.847
+    },
+    {
+      "Category": "Electronics",
+      "total_units_sold": 757335,
+      "total_demand": 889036,
+      "avg_daily_demand": 97.48201754385966,
+      "avg_inventory_level": 289.2604166666667,
+      "avg_price": 83.1721019736842,
+      "avg_discount": 9.055372807017545,
+      "product_count": 10,
+      "demand_share_pct": 11.21,
+      "sales_to_demand_ratio": 0.852
+    }
+  ],
+  "store_summary": [
+    {
+      "Store ID": "S002",
+      "Region": "South",
+      "total_units_sold": 1386126,
+      "total_demand": 1625471,
+      "avg_inventory_level": 332.01473684210526,
+      "unique_products": 20,
+      "stockout_days": 93,
+      "demand_share_pct": 20.5
+    },
+    {
+      "Store ID": "S003",
+      "Region": "East",
+      "total_units_sold": 1375613,
+      "total_demand": 1618324,
+      "avg_inventory_level": 321.99302631578945,
+      "unique_products": 20,
+      "stockout_days": 85,
+      "demand_share_pct": 20.41
+    },
+    {
+      "Store ID": "S005",
+      "Region": "North",
+      "total_units_sold": 1362812,
+      "total_demand": 1607085,
+      "avg_inventory_level": 280.40486842105264,
+      "unique_products": 20,
+      "stockout_days": 91,
+      "demand_share_pct": 20.27
+    },
+    {
+      "Store ID": "S001",
+      "Region": "North",
+      "total_units_sold": 1318134,
+      "total_demand": 1547573,
+      "avg_inventory_level": 277.65736842105264,
+      "unique_products": 20,
+      "stockout_days": 59,
+      "demand_share_pct": 19.52
+    },
+    {
+      "Store ID": "S004",
+      "Region": "West",
+      "total_units_sold": 1308191,
+      "total_demand": 1529651,
+      "avg_inventory_level": 293.2442105263158,
+      "unique_products": 20,
+      "stockout_days": 78,
+      "demand_share_pct": 19.29
+    }
+  ],
+  "region_summary": [
+    {
+      "Region": "North",
+      "total_units_sold": 2680946,
+      "total_demand": 3154658,
+      "avg_inventory_level": 279.0311184210526
+    },
+    {
+      "Region": "South",
+      "total_units_sold": 1386126,
+      "total_demand": 1625471,
+      "avg_inventory_level": 332.01473684210526
+    },
+    {
+      "Region": "East",
+      "total_units_sold": 1375613,
+      "total_demand": 1618324,
+      "avg_inventory_level": 321.99302631578945
+    },
+    {
+      "Region": "West",
+      "total_units_sold": 1308191,
+      "total_demand": 1529651,
+      "avg_inventory_level": 293.2442105263158
+    }
+  ],
+  "temporal_trends": {
+    "daily_sample": [
+      {
+        "date": "2023-11-02",
+        "daily_demand": 11849,
+        "daily_units_sold": 10028,
+        "daily_inventory": 29479
+      },
+      {
+        "date": "2023-11-03",
+        "daily_demand": 10628,
+        "daily_units_sold": 9426,
+        "daily_inventory": 28204
+      },
+      {
+        "date": "2023-11-04",
+        "daily_demand": 10763,
+        "daily_units_sold": 9049,
+        "daily_inventory": 26164
+      },
+      {
+        "date": "2023-11-05",
+        "daily_demand": 10618,
+        "daily_units_sold": 9015,
+        "daily_inventory": 30084
+      },
+      {
+        "date": "2023-11-06",
+        "daily_demand": 9587,
+        "daily_units_sold": 8009,
+        "daily_inventory": 29832
+      },
+      {
+        "date": "2023-11-07",
+        "daily_demand": 10765,
+        "daily_units_sold": 9219,
+        "daily_inventory": 31962
+      },
+      {
+        "date": "2023-11-08",
+        "daily_demand": 11283,
+        "daily_units_sold": 9449,
+        "daily_inventory": 30969
+      },
+      {
+        "date": "2023-11-09",
+        "daily_demand": 10701,
+        "daily_units_sold": 9277,
+        "daily_inventory": 28926
+      },
+      {
+        "date": "2023-11-10",
+        "daily_demand": 10396,
+        "daily_units_sold": 9052,
+        "daily_inventory": 27872
+      },
+      {
+        "date": "2023-11-11",
+        "daily_demand": 11353,
+        "daily_units_sold": 9641,
+        "daily_inventory": 29046
+      },
+      {
+        "date": "2023-11-12",
+        "daily_demand": 11309,
+        "daily_units_sold": 9460,
+        "daily_inventory": 30293
+      },
+      {
+        "date": "2023-11-13",
+        "daily_demand": 10543,
+        "daily_units_sold": 9078,
+        "daily_inventory": 30490
+      },
+      {
+        "date": "2023-11-14",
+        "daily_demand": 10239,
+        "daily_units_sold": 9093,
+        "daily_inventory": 30224
+      },
+      {
+        "date": "2023-11-15",
+        "daily_demand": 11353,
+        "daily_units_sold": 9512,
+        "daily_inventory": 29319
+      },
+      {
+        "date": "2023-11-16",
+        "daily_demand": 10298,
+        "daily_units_sold": 8987,
+        "daily_inventory": 29890
+      },
+      {
+        "date": "2023-11-17",
+        "daily_demand": 9934,
+        "daily_units_sold": 8605,
+        "daily_inventory": 29759
+      },
+      {
+        "date": "2023-11-18",
+        "daily_demand": 11587,
+        "daily_units_sold": 9714,
+        "daily_inventory": 30887
+      },
+      {
+        "date": "2023-11-19",
+        "daily_demand": 11272,
+        "daily_units_sold": 9362,
+        "daily_inventory": 29107
+      },
+      {
+        "date": "2023-11-20",
+        "daily_demand": 9817,
+        "daily_units_sold": 8715,
+        "daily_inventory": 29147
+      },
+      {
+        "date": "2023-11-21",
+        "daily_demand": 10578,
+        "daily_units_sold": 9086,
+        "daily_inventory": 29676
+      },
+      {
+        "date": "2023-11-22",
+        "daily_demand": 11307,
+        "daily_units_sold": 9483,
+        "daily_inventory": 30292
+      },
+      {
+        "date": "2023-11-23",
+        "daily_demand": 11080,
+        "daily_units_sold": 9376,
+        "daily_inventory": 30066
+      },
+      {
+        "date": "2023-11-24",
+        "daily_demand": 10316,
+        "daily_units_sold": 8838,
+        "daily_inventory": 30621
+      },
+      {
+        "date": "2023-11-25",
+        "daily_demand": 10158,
+        "daily_units_sold": 8591,
+        "daily_inventory": 28894
+      },
+      {
+        "date": "2023-11-26",
+        "daily_demand": 10354,
+        "daily_units_sold": 9044,
+        "daily_inventory": 30436
+      },
+      {
+        "date": "2023-11-27",
+        "daily_demand": 11318,
+        "daily_units_sold": 9540,
+        "daily_inventory": 29712
+      },
+      {
+        "date": "2023-11-28",
+        "daily_demand": 9905,
+        "daily_units_sold": 8404,
+        "daily_inventory": 28924
+      },
+      {
+        "date": "2023-11-29",
+        "daily_demand": 10610,
+        "daily_units_sold": 9197,
+        "daily_inventory": 30768
+      },
+      {
+        "date": "2023-11-30",
+        "daily_demand": 9890,
+        "daily_units_sold": 8776,
+        "daily_inventory": 29654
+      },
+      {
+        "date": "2023-12-01",
+        "daily_demand": 11626,
+        "daily_units_sold": 9466,
+        "daily_inventory": 29728
+      },
+      {
+        "date": "2023-12-02",
+        "daily_demand": 11816,
+        "daily_units_sold": 10362,
+        "daily_inventory": 28343
+      },
+      {
+        "date": "2023-12-03",
+        "daily_demand": 11143,
+        "daily_units_sold": 9483,
+        "daily_inventory": 27230
+      },
+      {
+        "date": "2023-12-04",
+        "daily_demand": 11150,
+        "daily_units_sold": 9687,
+        "daily_inventory": 30119
+      },
+      {
+        "date": "2023-12-05",
+        "daily_demand": 10942,
+        "daily_units_sold": 9129,
+        "daily_inventory": 32381
+      },
+      {
+        "date": "2023-12-06",
+        "daily_demand": 12701,
+        "daily_units_sold": 11327,
+        "daily_inventory": 32452
+      },
+      {
+        "date": "2023-12-07",
+        "daily_demand": 11461,
+        "daily_units_sold": 9915,
+        "daily_inventory": 29068
+      },
+      {
+        "date": "2023-12-08",
+        "daily_demand": 10967,
+        "daily_units_sold": 9430,
+        "daily_inventory": 30436
+      },
+      {
+        "date": "2023-12-09",
+        "daily_demand": 10302,
+        "daily_units_sold": 8769,
+        "daily_inventory": 32403
+      },
+      {
+        "date": "2023-12-10",
+        "daily_demand": 10770,
+        "daily_units_sold": 9624,
+        "daily_inventory": 33344
+      },
+      {
+        "date": "2023-12-11",
+        "daily_demand": 9679,
+        "daily_units_sold": 8767,
+        "daily_inventory": 32475
+      },
+      {
+        "date": "2023-12-12",
+        "daily_demand": 11853,
+        "daily_units_sold": 9584,
+        "daily_inventory": 29698
+      },
+      {
+        "date": "2023-12-13",
+        "daily_demand": 11992,
+        "daily_units_sold": 10508,
+        "daily_inventory": 28180
+      },
+      {
+        "date": "2023-12-14",
+        "daily_demand": 11385,
+        "daily_units_sold": 9745,
+        "daily_inventory": 28734
+      },
+      {
+        "date": "2023-12-15",
+        "daily_demand": 10994,
+        "daily_units_sold": 9090,
+        "daily_inventory": 30080
+      },
+      {
+        "date": "2023-12-16",
+        "daily_demand": 10445,
+        "daily_units_sold": 9161,
+        "daily_inventory": 31737
+      },
+      {
+        "date": "2023-12-17",
+        "daily_demand": 11106,
+        "daily_units_sold": 9184,
+        "daily_inventory": 31709
+      },
+      {
+        "date": "2023-12-18",
+        "daily_demand": 11890,
+        "daily_units_sold": 10282,
+        "daily_inventory": 30024
+      },
+      {
+        "date": "2023-12-19",
+        "daily_demand": 11331,
+        "daily_units_sold": 9249,
+        "daily_inventory": 29564
+      },
+      {
+        "date": "2023-12-20",
+        "daily_demand": 10632,
+        "daily_units_sold": 8916,
+        "daily_inventory": 32620
+      },
+      {
+        "date": "2023-12-21",
+        "daily_demand": 12396,
+        "daily_units_sold": 10693,
+        "daily_inventory": 34590
+      },
+      {
+        "date": "2023-12-22",
+        "daily_demand": 11691,
+        "daily_units_sold": 9783,
+        "daily_inventory": 31825
+      },
+      {
+        "date": "2023-12-23",
+        "daily_demand": 11032,
+        "daily_units_sold": 9588,
+        "daily_inventory": 32807
+      },
+      {
+        "date": "2023-12-24",
+        "daily_demand": 11920,
+        "daily_units_sold": 10491,
+        "daily_inventory": 31829
+      },
+      {
+        "date": "2023-12-25",
+        "daily_demand": 9871,
+        "daily_units_sold": 8639,
+        "daily_inventory": 32483
+      },
+      {
+        "date": "2023-12-26",
+        "daily_demand": 11544,
+        "daily_units_sold": 9687,
+        "daily_inventory": 31478
+      },
+      {
+        "date": "2023-12-27",
+        "daily_demand": 7180,
+        "daily_units_sold": 6136,
+        "daily_inventory": 27754
+      },
+      {
+        "date": "2023-12-28",
+        "daily_demand": 7006,
+        "daily_units_sold": 6029,
+        "daily_inventory": 35655
+      },
+      {
+        "date": "2023-12-29",
+        "daily_demand": 6941,
+        "daily_units_sold": 6267,
+        "daily_inventory": 33798
+      },
+      {
+        "date": "2023-12-30",
+        "daily_demand": 6223,
+        "daily_units_sold": 5316,
+        "daily_inventory": 31835
+      },
+      {
+        "date": "2023-12-31",
+        "daily_demand": 6400,
+        "daily_units_sold": 5783,
+        "daily_inventory": 31590
+      },
+      {
+        "date": "2024-01-01",
+        "daily_demand": 6934,
+        "daily_units_sold": 6030,
+        "daily_inventory": 30622
+      },
+      {
+        "date": "2024-01-02",
+        "daily_demand": 7175,
+        "daily_units_sold": 6106,
+        "daily_inventory": 27866
+      },
+      {
+        "date": "2024-01-03",
+        "daily_demand": 7110,
+        "daily_units_sold": 6268,
+        "daily_inventory": 28366
+      },
+      {
+        "date": "2024-01-04",
+        "daily_demand": 6430,
+        "daily_units_sold": 5661,
+        "daily_inventory": 25711
+      },
+      {
+        "date": "2024-01-05",
+        "daily_demand": 7707,
+        "daily_units_sold": 6598,
+        "daily_inventory": 23559
+      },
+      {
+        "date": "2024-01-06",
+        "daily_demand": 7302,
+        "daily_units_sold": 6655,
+        "daily_inventory": 23330
+      },
+      {
+        "date": "2024-01-07",
+        "daily_demand": 6946,
+        "daily_units_sold": 6003,
+        "daily_inventory": 22634
+      },
+      {
+        "date": "2024-01-08",
+        "daily_demand": 7143,
+        "daily_units_sold": 5620,
+        "daily_inventory": 23578
+      },
+      {
+        "date": "2024-01-09",
+        "daily_demand": 10083,
+        "daily_units_sold": 8533,
+        "daily_inventory": 25413
+      },
+      {
+        "date": "2024-01-10",
+        "daily_demand": 10060,
+        "daily_units_sold": 8277,
+        "daily_inventory": 24166
+      },
+      {
+        "date": "2024-01-11",
+        "daily_demand": 11324,
+        "daily_units_sold": 9323,
+        "daily_inventory": 24308
+      },
+      {
+        "date": "2024-01-12",
+        "daily_demand": 10648,
+        "daily_units_sold": 8508,
+        "daily_inventory": 23753
+      },
+      {
+        "date": "2024-01-13",
+        "daily_demand": 11844,
+        "daily_units_sold": 9926,
+        "daily_inventory": 28303
+      },
+      {
+        "date": "2024-01-14",
+        "daily_demand": 10186,
+        "daily_units_sold": 8990,
+        "daily_inventory": 29311
+      },
+      {
+        "date": "2024-01-15",
+        "daily_demand": 10523,
+        "daily_units_sold": 8671,
+        "daily_inventory": 31230
+      },
+      {
+        "date": "2024-01-16",
+        "daily_demand": 10437,
+        "daily_units_sold": 9078,
+        "daily_inventory": 30333
+      },
+      {
+        "date": "2024-01-17",
+        "daily_demand": 10122,
+        "daily_units_sold": 8736,
+        "daily_inventory": 30081
+      },
+      {
+        "date": "2024-01-18",
+        "daily_demand": 11301,
+        "daily_units_sold": 9429,
+        "daily_inventory": 31662
+      },
+      {
+        "date": "2024-01-19",
+        "daily_demand": 9017,
+        "daily_units_sold": 7990,
+        "daily_inventory": 32637
+      },
+      {
+        "date": "2024-01-20",
+        "daily_demand": 12846,
+        "daily_units_sold": 10914,
+        "daily_inventory": 31192
+      },
+      {
+        "date": "2024-01-21",
+        "daily_demand": 10348,
+        "daily_units_sold": 8563,
+        "daily_inventory": 29075
+      },
+      {
+        "date": "2024-01-22",
+        "daily_demand": 11927,
+        "daily_units_sold": 9639,
+        "daily_inventory": 29818
+      },
+      {
+        "date": "2024-01-23",
+        "daily_demand": 9479,
+        "daily_units_sold": 8370,
+        "daily_inventory": 31512
+      },
+      {
+        "date": "2024-01-24",
+        "daily_demand": 11386,
+        "daily_units_sold": 10051,
+        "daily_inventory": 31866
+      },
+      {
+        "date": "2024-01-25",
+        "daily_demand": 11794,
+        "daily_units_sold": 10028,
+        "daily_inventory": 31476
+      },
+      {
+        "date": "2024-01-26",
+        "daily_demand": 11182,
+        "daily_units_sold": 9184,
+        "daily_inventory": 32925
+      },
+      {
+        "date": "2024-01-27",
+        "daily_demand": 11540,
+        "daily_units_sold": 9598,
+        "daily_inventory": 32092
+      },
+      {
+        "date": "2024-01-28",
+        "daily_demand": 11440,
+        "daily_units_sold": 9942,
+        "daily_inventory": 29358
+      },
+      {
+        "date": "2024-01-29",
+        "daily_demand": 10268,
+        "daily_units_sold": 8802,
+        "daily_inventory": 29578
+      },
+      {
+        "date": "2024-01-30",
+        "daily_demand": 9657,
+        "daily_units_sold": 8425,
+        "daily_inventory": 29049
+      }
+    ],
+    "weekly": [
+      {
+        "week_start": "2021-12-27",
+        "weekly_demand": 20874,
+        "weekly_units_sold": 16285
+      },
+      {
+        "week_start": "2022-01-03",
+        "weekly_demand": 80519,
+        "weekly_units_sold": 62634
+      },
+      {
+        "week_start": "2022-01-10",
+        "weekly_demand": 79100,
+        "weekly_units_sold": 67359
+      },
+      {
+        "week_start": "2022-01-17",
+        "weekly_demand": 78253,
+        "weekly_units_sold": 66230
+      },
+      {
+        "week_start": "2022-01-24",
+        "weekly_demand": 72770,
+        "weekly_units_sold": 62395
+      },
+      {
+        "week_start": "2022-01-31",
+        "weekly_demand": 80927,
+        "weekly_units_sold": 68608
+      },
+      {
+        "week_start": "2022-02-07",
+        "weekly_demand": 80554,
+        "weekly_units_sold": 68185
+      },
+      {
+        "week_start": "2022-02-14",
+        "weekly_demand": 80682,
+        "weekly_units_sold": 68607
+      },
+      {
+        "week_start": "2022-02-21",
+        "weekly_demand": 77100,
+        "weekly_units_sold": 65349
+      },
+      {
+        "week_start": "2022-02-28",
+        "weekly_demand": 80474,
+        "weekly_units_sold": 68197
+      },
+      {
+        "week_start": "2022-03-07",
+        "weekly_demand": 80500,
+        "weekly_units_sold": 70144
+      },
+      {
+        "week_start": "2022-03-14",
+        "weekly_demand": 79106,
+        "weekly_units_sold": 67192
+      },
+      {
+        "week_start": "2022-03-21",
+        "weekly_demand": 82700,
+        "weekly_units_sold": 70696
+      },
+      {
+        "week_start": "2022-03-28",
+        "weekly_demand": 75634,
+        "weekly_units_sold": 65913
+      },
+      {
+        "week_start": "2022-04-04",
+        "weekly_demand": 78846,
+        "weekly_units_sold": 67568
+      },
+      {
+        "week_start": "2022-04-11",
+        "weekly_demand": 81000,
+        "weekly_units_sold": 68199
+      },
+      {
+        "week_start": "2022-04-18",
+        "weekly_demand": 70742,
+        "weekly_units_sold": 60638
+      },
+      {
+        "week_start": "2022-04-25",
+        "weekly_demand": 46770,
+        "weekly_units_sold": 41257
+      },
+      {
+        "week_start": "2022-05-02",
+        "weekly_demand": 49024,
+        "weekly_units_sold": 42590
+      },
+      {
+        "week_start": "2022-05-09",
+        "weekly_demand": 48122,
+        "weekly_units_sold": 41548
+      },
+      {
+        "week_start": "2022-05-16",
+        "weekly_demand": 49170,
+        "weekly_units_sold": 42622
+      },
+      {
+        "week_start": "2022-05-23",
+        "weekly_demand": 65389,
+        "weekly_units_sold": 54613
+      },
+      {
+        "week_start": "2022-05-30",
+        "weekly_demand": 78367,
+        "weekly_units_sold": 66003
+      },
+      {
+        "week_start": "2022-06-06",
+        "weekly_demand": 82695,
+        "weekly_units_sold": 70951
+      },
+      {
+        "week_start": "2022-06-13",
+        "weekly_demand": 82925,
+        "weekly_units_sold": 70621
+      },
+      {
+        "week_start": "2022-06-20",
+        "weekly_demand": 86038,
+        "weekly_units_sold": 72300
+      },
+      {
+        "week_start": "2022-06-27",
+        "weekly_demand": 57098,
+        "weekly_units_sold": 49255
+      },
+      {
+        "week_start": "2022-07-04",
+        "weekly_demand": 53128,
+        "weekly_units_sold": 45588
+      },
+      {
+        "week_start": "2022-07-11",
+        "weekly_demand": 52011,
+        "weekly_units_sold": 44866
+      },
+      {
+        "week_start": "2022-07-18",
+        "weekly_demand": 50936,
+        "weekly_units_sold": 44197
+      },
+      {
+        "week_start": "2022-07-25",
+        "weekly_demand": 82795,
+        "weekly_units_sold": 67479
+      },
+      {
+        "week_start": "2022-08-01",
+        "weekly_demand": 83914,
+        "weekly_units_sold": 71115
+      },
+      {
+        "week_start": "2022-08-08",
+        "weekly_demand": 81637,
+        "weekly_units_sold": 70002
+      },
+      {
+        "week_start": "2022-08-15",
+        "weekly_demand": 84515,
+        "weekly_units_sold": 71672
+      },
+      {
+        "week_start": "2022-08-22",
+        "weekly_demand": 87455,
+        "weekly_units_sold": 75175
+      },
+      {
+        "week_start": "2022-08-29",
+        "weekly_demand": 79940,
+        "weekly_units_sold": 68277
+      },
+      {
+        "week_start": "2022-09-05",
+        "weekly_demand": 75466,
+        "weekly_units_sold": 64950
+      },
+      {
+        "week_start": "2022-09-12",
+        "weekly_demand": 75038,
+        "weekly_units_sold": 64892
+      },
+      {
+        "week_start": "2022-09-19",
+        "weekly_demand": 73602,
+        "weekly_units_sold": 62533
+      },
+      {
+        "week_start": "2022-09-26",
+        "weekly_demand": 73896,
+        "weekly_units_sold": 63498
+      },
+      {
+        "week_start": "2022-10-03",
+        "weekly_demand": 75437,
+        "weekly_units_sold": 64370
+      },
+      {
+        "week_start": "2022-10-10",
+        "weekly_demand": 78475,
+        "weekly_units_sold": 66465
+      },
+      {
+        "week_start": "2022-10-17",
+        "weekly_demand": 72689,
+        "weekly_units_sold": 61854
+      },
+      {
+        "week_start": "2022-10-24",
+        "weekly_demand": 72800,
+        "weekly_units_sold": 60932
+      },
+      {
+        "week_start": "2022-10-31",
+        "weekly_demand": 75263,
+        "weekly_units_sold": 64039
+      },
+      {
+        "week_start": "2022-11-07",
+        "weekly_demand": 77110,
+        "weekly_units_sold": 65794
+      },
+      {
+        "week_start": "2022-11-14",
+        "weekly_demand": 77068,
+        "weekly_units_sold": 65341
+      },
+      {
+        "week_start": "2022-11-21",
+        "weekly_demand": 75236,
+        "weekly_units_sold": 63971
+      },
+      {
+        "week_start": "2022-11-28",
+        "weekly_demand": 71642,
+        "weekly_units_sold": 61898
+      },
+      {
+        "week_start": "2022-12-05",
+        "weekly_demand": 79483,
+        "weekly_units_sold": 67845
+      },
+      {
+        "week_start": "2022-12-12",
+        "weekly_demand": 80786,
+        "weekly_units_sold": 68447
+      },
+      {
+        "week_start": "2022-12-19",
+        "weekly_demand": 78731,
+        "weekly_units_sold": 66995
+      },
+      {
+        "week_start": "2022-12-26",
+        "weekly_demand": 79364,
+        "weekly_units_sold": 67246
+      },
+      {
+        "week_start": "2023-01-02",
+        "weekly_demand": 79306,
+        "weekly_units_sold": 67785
+      },
+      {
+        "week_start": "2023-01-09",
+        "weekly_demand": 81052,
+        "weekly_units_sold": 67575
+      },
+      {
+        "week_start": "2023-01-16",
+        "weekly_demand": 82747,
+        "weekly_units_sold": 70207
+      },
+      {
+        "week_start": "2023-01-23",
+        "weekly_demand": 72173,
+        "weekly_units_sold": 61752
+      },
+      {
+        "week_start": "2023-01-30",
+        "weekly_demand": 50111,
+        "weekly_units_sold": 43346
+      },
+      {
+        "week_start": "2023-02-06",
+        "weekly_demand": 49152,
+        "weekly_units_sold": 42425
+      },
+      {
+        "week_start": "2023-02-13",
+        "weekly_demand": 50100,
+        "weekly_units_sold": 44199
+      },
+      {
+        "week_start": "2023-02-20",
+        "weekly_demand": 49695,
+        "weekly_units_sold": 42199
+      },
+      {
+        "week_start": "2023-02-27",
+        "weekly_demand": 72299,
+        "weekly_units_sold": 58880
+      },
+      {
+        "week_start": "2023-03-06",
+        "weekly_demand": 78695,
+        "weekly_units_sold": 67190
+      },
+      {
+        "week_start": "2023-03-13",
+        "weekly_demand": 81727,
+        "weekly_units_sold": 69722
+      },
+      {
+        "week_start": "2023-03-20",
+        "weekly_demand": 80271,
+        "weekly_units_sold": 67535
+      },
+      {
+        "week_start": "2023-03-27",
+        "weekly_demand": 74823,
+        "weekly_units_sold": 64747
+      },
+      {
+        "week_start": "2023-04-03",
+        "weekly_demand": 77084,
+        "weekly_units_sold": 64589
+      },
+      {
+        "week_start": "2023-04-10",
+        "weekly_demand": 56743,
+        "weekly_units_sold": 49164
+      },
+      {
+        "week_start": "2023-04-17",
+        "weekly_demand": 48933,
+        "weekly_units_sold": 42340
+      },
+      {
+        "week_start": "2023-04-24",
+        "weekly_demand": 47126,
+        "weekly_units_sold": 41132
+      },
+      {
+        "week_start": "2023-05-01",
+        "weekly_demand": 49853,
+        "weekly_units_sold": 42960
+      },
+      {
+        "week_start": "2023-05-08",
+        "weekly_demand": 57194,
+        "weekly_units_sold": 48175
+      },
+      {
+        "week_start": "2023-05-15",
+        "weekly_demand": 81549,
+        "weekly_units_sold": 68542
+      },
+      {
+        "week_start": "2023-05-22",
+        "weekly_demand": 78344,
+        "weekly_units_sold": 66372
+      },
+      {
+        "week_start": "2023-05-29",
+        "weekly_demand": 76764,
+        "weekly_units_sold": 65160
+      },
+      {
+        "week_start": "2023-06-05",
+        "weekly_demand": 86907,
+        "weekly_units_sold": 72523
+      },
+      {
+        "week_start": "2023-06-12",
+        "weekly_demand": 81369,
+        "weekly_units_sold": 69720
+      },
+      {
+        "week_start": "2023-06-19",
+        "weekly_demand": 84944,
+        "weekly_units_sold": 72386
+      },
+      {
+        "week_start": "2023-06-26",
+        "weekly_demand": 82045,
+        "weekly_units_sold": 69655
+      },
+      {
+        "week_start": "2023-07-03",
+        "weekly_demand": 86963,
+        "weekly_units_sold": 72936
+      },
+      {
+        "week_start": "2023-07-10",
+        "weekly_demand": 82021,
+        "weekly_units_sold": 69427
+      },
+      {
+        "week_start": "2023-07-17",
+        "weekly_demand": 81893,
+        "weekly_units_sold": 70366
+      },
+      {
+        "week_start": "2023-07-24",
+        "weekly_demand": 85380,
+        "weekly_units_sold": 72008
+      },
+      {
+        "week_start": "2023-07-31",
+        "weekly_demand": 85155,
+        "weekly_units_sold": 71267
+      },
+      {
+        "week_start": "2023-08-07",
+        "weekly_demand": 86274,
+        "weekly_units_sold": 73222
+      },
+      {
+        "week_start": "2023-08-14",
+        "weekly_demand": 84102,
+        "weekly_units_sold": 71315
+      },
+      {
+        "week_start": "2023-08-21",
+        "weekly_demand": 83030,
+        "weekly_units_sold": 70765
+      },
+      {
+        "week_start": "2023-08-28",
+        "weekly_demand": 76053,
+        "weekly_units_sold": 64984
+      },
+      {
+        "week_start": "2023-09-04",
+        "weekly_demand": 75570,
+        "weekly_units_sold": 65219
+      },
+      {
+        "week_start": "2023-09-11",
+        "weekly_demand": 75573,
+        "weekly_units_sold": 65439
+      },
+      {
+        "week_start": "2023-09-18",
+        "weekly_demand": 75564,
+        "weekly_units_sold": 65217
+      },
+      {
+        "week_start": "2023-09-25",
+        "weekly_demand": 72385,
+        "weekly_units_sold": 62604
+      },
+      {
+        "week_start": "2023-10-02",
+        "weekly_demand": 67527,
+        "weekly_units_sold": 58384
+      },
+      {
+        "week_start": "2023-10-09",
+        "weekly_demand": 47981,
+        "weekly_units_sold": 41638
+      },
+      {
+        "week_start": "2023-10-16",
+        "weekly_demand": 48469,
+        "weekly_units_sold": 42747
+      },
+      {
+        "week_start": "2023-10-23",
+        "weekly_demand": 69097,
+        "weekly_units_sold": 57067
+      },
+      {
+        "week_start": "2023-10-30",
+        "weekly_demand": 73764,
+        "weekly_units_sold": 63075
+      },
+      {
+        "week_start": "2023-11-06",
+        "weekly_demand": 75394,
+        "weekly_units_sold": 64107
+      },
+      {
+        "week_start": "2023-11-13",
+        "weekly_demand": 75226,
+        "weekly_units_sold": 64351
+      },
+      {
+        "week_start": "2023-11-20",
+        "weekly_demand": 73610,
+        "weekly_units_sold": 63133
+      },
+      {
+        "week_start": "2023-11-27",
+        "weekly_demand": 76308,
+        "weekly_units_sold": 65228
+      },
+      {
+        "week_start": "2023-12-04",
+        "weekly_demand": 78293,
+        "weekly_units_sold": 67881
+      },
+      {
+        "week_start": "2023-12-11",
+        "weekly_demand": 77454,
+        "weekly_units_sold": 66039
+      },
+      {
+        "week_start": "2023-12-18",
+        "weekly_demand": 80892,
+        "weekly_units_sold": 69002
+      },
+      {
+        "week_start": "2023-12-25",
+        "weekly_demand": 55165,
+        "weekly_units_sold": 47857
+      },
+      {
+        "week_start": "2024-01-01",
+        "weekly_demand": 49604,
+        "weekly_units_sold": 43321
+      },
+      {
+        "week_start": "2024-01-08",
+        "weekly_demand": 71288,
+        "weekly_units_sold": 59177
+      },
+      {
+        "week_start": "2024-01-15",
+        "weekly_demand": 74594,
+        "weekly_units_sold": 63381
+      },
+      {
+        "week_start": "2024-01-22",
+        "weekly_demand": 78748,
+        "weekly_units_sold": 66812
+      },
+      {
+        "week_start": "2024-01-29",
+        "weekly_demand": 19925,
+        "weekly_units_sold": 17227
+      }
+    ],
+    "monthly": [
+      {
+        "year_month": "2022-01",
+        "monthly_demand": 341544,
+        "monthly_units_sold": 283495,
+        "avg_inventory": 299.2722580645161
+      },
+      {
+        "year_month": "2022-02",
+        "monthly_demand": 319883,
+        "monthly_units_sold": 271108,
+        "avg_inventory": 322.0225
+      },
+      {
+        "year_month": "2022-03",
+        "monthly_demand": 353173,
+        "monthly_units_sold": 303752,
+        "avg_inventory": 323.28387096774196
+      },
+      {
+        "year_month": "2022-04",
+        "monthly_demand": 305076,
+        "monthly_units_sold": 260812,
+        "avg_inventory": 311.067
+      },
+      {
+        "year_month": "2022-05",
+        "monthly_demand": 239112,
+        "monthly_units_sold": 205949,
+        "avg_inventory": 236.8351612903226
+      },
+      {
+        "year_month": "2022-06",
+        "monthly_demand": 345725,
+        "monthly_units_sold": 292816,
+        "avg_inventory": 325.022
+      },
+      {
+        "year_month": "2022-07",
+        "monthly_demand": 259736,
+        "monthly_units_sold": 220157,
+        "avg_inventory": 268.66129032258067
+      },
+      {
+        "year_month": "2022-08",
+        "monthly_demand": 370437,
+        "monthly_units_sold": 316705,
+        "avg_inventory": 329.76
+      },
+      {
+        "year_month": "2022-09",
+        "monthly_demand": 324264,
+        "monthly_units_sold": 277151,
+        "avg_inventory": 305.86466666666666
+      },
+      {
+        "year_month": "2022-10",
+        "monthly_demand": 329865,
+        "monthly_units_sold": 280227,
+        "avg_inventory": 299.4383870967742
+      },
+      {
+        "year_month": "2022-11",
+        "monthly_demand": 324406,
+        "monthly_units_sold": 276788,
+        "avg_inventory": 309.41133333333335
+      },
+      {
+        "year_month": "2022-12",
+        "monthly_demand": 349431,
+        "monthly_units_sold": 296772,
+        "avg_inventory": 313.65645161290325
+      },
+      {
+        "year_month": "2023-01",
+        "monthly_demand": 339865,
+        "monthly_units_sold": 288551,
+        "avg_inventory": 323.1325806451613
+      },
+      {
+        "year_month": "2023-02",
+        "monthly_demand": 200259,
+        "monthly_units_sold": 173247,
+        "avg_inventory": 237.05357142857142
+      },
+      {
+        "year_month": "2023-03",
+        "monthly_demand": 351233,
+        "monthly_units_sold": 296491,
+        "avg_inventory": 304.19387096774193
+      },
+      {
+        "year_month": "2023-04",
+        "monthly_demand": 251824,
+        "monthly_units_sold": 216166,
+        "avg_inventory": 276.501
+      },
+      {
+        "year_month": "2023-05",
+        "monthly_demand": 297319,
+        "monthly_units_sold": 252560,
+        "avg_inventory": 270.2041935483871
+      },
+      {
+        "year_month": "2023-06",
+        "monthly_demand": 358351,
+        "monthly_units_sold": 303010,
+        "avg_inventory": 328.587
+      },
+      {
+        "year_month": "2023-07",
+        "monthly_demand": 369946,
+        "monthly_units_sold": 313395,
+        "avg_inventory": 332.31612903225806
+      },
+      {
+        "year_month": "2023-08",
+        "monthly_demand": 372344,
+        "monthly_units_sold": 315862,
+        "avg_inventory": 339.5264516129032
+      },
+      {
+        "year_month": "2023-09",
+        "monthly_demand": 320325,
+        "monthly_units_sold": 276006,
+        "avg_inventory": 304.679
+      },
+      {
+        "year_month": "2023-10",
+        "monthly_demand": 262590,
+        "monthly_units_sold": 225274,
+        "avg_inventory": 268.8074193548387
+      },
+      {
+        "year_month": "2023-11",
+        "monthly_demand": 320848,
+        "monthly_units_sold": 274574,
+        "avg_inventory": 297.6736666666667
+      },
+      {
+        "year_month": "2023-12",
+        "monthly_demand": 326389,
+        "monthly_units_sold": 280090,
+        "avg_inventory": 311.6029032258065
+      },
+      {
+        "year_month": "2024-01",
+        "monthly_demand": 294159,
+        "monthly_units_sold": 249918,
+        "avg_inventory": 284.93466666666666
+      }
+    ]
+  },
+  "risk_metrics": {
+    "stockout_risk_records": 10394,
+    "stockout_risk_pct": 13.68,
+    "severe_zero_inventory_records": 406,
+    "severe_zero_inventory_pct": 0.53,
+    "overstock_risk_records": 31894,
+    "overstock_risk_pct": 41.97,
+    "balanced_inventory_records": 33712,
+    "balanced_inventory_pct": 44.36
+  },
+  "promotion_analysis": [
+    {
+      "Promotion": 0,
+      "record_count": 51000,
+      "mean_demand": 95.0268431372549,
+      "median_demand": 92.0,
+      "std_demand": 40.65426949128545,
+      "mean_units_sold": 81.8333137254902
+    },
+    {
+      "Promotion": 1,
+      "record_count": 25000,
+      "mean_demand": 123.2694,
+      "median_demand": 120.0,
+      "std_demand": 52.90071193332773,
+      "mean_units_sold": 103.09508
+    }
+  ],
+  "discount_analysis": [
+    {
+      "discount_tier": "0%",
+      "record_count": 17126,
+      "mean_demand": 94.74886138035735,
+      "mean_units_sold": 81.57415625364942,
+      "avg_price": 73.06792479271283
+    },
+    {
+      "discount_tier": "1-5%",
+      "record_count": 16918,
+      "mean_demand": 94.9418962052252,
+      "mean_units_sold": 81.69476297434684,
+      "avg_price": 68.5262324151791
+    },
+    {
+      "discount_tier": "6-10%",
+      "record_count": 23298,
+      "mean_demand": 102.76783414885398,
+      "mean_units_sold": 87.65795347240106,
+      "avg_price": 66.92686196240021
+    },
+    {
+      "discount_tier": "11-15%",
+      "record_count": 6245,
+      "mean_demand": 123.5759807846277,
+      "mean_units_sold": 102.87846277021617,
+      "avg_price": 67.08155644515612
+    },
+    {
+      "discount_tier": "16-20%",
+      "record_count": 6191,
+      "mean_demand": 124.06525601679859,
+      "mean_units_sold": 103.7748344370861,
+      "avg_price": 63.45278307220158
+    },
+    {
+      "discount_tier": ">20%",
+      "record_count": 6222,
+      "mean_demand": 122.96737383477982,
+      "mean_units_sold": 103.58791385406622,
+      "avg_price": 58.737942783670846
+    }
+  ],
+  "seasonality_summary": [
+    {
+      "Seasonality": "Summer",
+      "mean_demand": 112.8553804347826,
+      "total_demand": 2076539,
+      "record_count": 18400
+    },
+    {
+      "Seasonality": "Autumn",
+      "mean_demand": 103.42296703296704,
+      "total_demand": 1882298,
+      "record_count": 18200
+    },
+    {
+      "Seasonality": "Winter",
+      "mean_demand": 103.40619047619047,
+      "total_demand": 2171530,
+      "record_count": 21000
+    },
+    {
+      "Seasonality": "Spring",
+      "mean_demand": 97.70309782608696,
+      "total_demand": 1797737,
+      "record_count": 18400
+    }
+  ],
+  "weather_summary": [
+    {
+      "Weather Condition": "Sunny",
+      "mean_demand": 115.16718885987815,
+      "total_demand": 2646542,
+      "record_count": 22980
+    },
+    {
+      "Weather Condition": "Cloudy",
+      "mean_demand": 105.40406403940887,
+      "total_demand": 2567643,
+      "record_count": 24360
+    },
+    {
+      "Weather Condition": "Rainy",
+      "mean_demand": 95.10674285714286,
+      "total_demand": 1664368,
+      "record_count": 17500
+    },
+    {
+      "Weather Condition": "Snowy",
+      "mean_demand": 94.04578853046596,
+      "total_demand": 1049551,
+      "record_count": 11160
+    }
+  ],
+  "product_rankings": [
+    {
+      "Product ID": "P0013",
+      "Category": "Groceries",
+      "mean_demand": 121.83322368421052,
+      "std_demand": 48.97296110626342,
+      "min_demand": 4,
+      "max_demand": 343,
+      "total_demand": 370373,
+      "avg_inventory": 446.1424342105263,
+      "cv_demand": 0.402,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0004",
+      "Category": "Groceries",
+      "mean_demand": 120.98026315789474,
+      "std_demand": 48.70288136686741,
+      "min_demand": 4,
+      "max_demand": 351,
+      "total_demand": 367780,
+      "avg_inventory": 348.9611842105263,
+      "cv_demand": 0.403,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0007",
+      "Category": "Groceries",
+      "mean_demand": 120.81282894736842,
+      "std_demand": 47.8454876411348,
+      "min_demand": 4,
+      "max_demand": 331,
+      "total_demand": 367271,
+      "avg_inventory": 491.8871710526316,
+      "cv_demand": 0.396,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0010",
+      "Category": "Groceries",
+      "mean_demand": 120.65756578947368,
+      "std_demand": 48.093184905442456,
+      "min_demand": 4,
+      "max_demand": 312,
+      "total_demand": 366799,
+      "avg_inventory": 300.48651315789476,
+      "cv_demand": 0.399,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0001",
+      "Category": "Groceries",
+      "mean_demand": 121.23421052631579,
+      "std_demand": 47.36886210146491,
+      "min_demand": 4,
+      "max_demand": 291,
+      "total_demand": 276414,
+      "avg_inventory": 402.4114035087719,
+      "cv_demand": 0.391,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0009",
+      "Category": "Groceries",
+      "mean_demand": 120.85350877192982,
+      "std_demand": 48.07106352805878,
+      "min_demand": 4,
+      "max_demand": 338,
+      "total_demand": 275546,
+      "avg_inventory": 270.225,
+      "cv_demand": 0.398,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0017",
+      "Category": "Toys",
+      "mean_demand": 92.85438596491228,
+      "std_demand": 46.606564498830544,
+      "min_demand": 4,
+      "max_demand": 319,
+      "total_demand": 211708,
+      "avg_inventory": 201.81140350877192,
+      "cv_demand": 0.502,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0002",
+      "Category": "Groceries",
+      "mean_demand": 122.92828947368422,
+      "std_demand": 50.625509261510146,
+      "min_demand": 6,
+      "max_demand": 370,
+      "total_demand": 186851,
+      "avg_inventory": 351.9092105263158,
+      "cv_demand": 0.412,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0006",
+      "Category": "Groceries",
+      "mean_demand": 122.22039473684211,
+      "std_demand": 48.86302527286959,
+      "min_demand": 4,
+      "max_demand": 373,
+      "total_demand": 185775,
+      "avg_inventory": 426.61513157894734,
+      "cv_demand": 0.4,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0008",
+      "Category": "Groceries",
+      "mean_demand": 122.02302631578948,
+      "std_demand": 49.143380892068514,
+      "min_demand": 4,
+      "max_demand": 430,
+      "total_demand": 185475,
+      "avg_inventory": 143.54144736842105,
+      "cv_demand": 0.403,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0015",
+      "Category": "Groceries",
+      "mean_demand": 120.03355263157894,
+      "std_demand": 48.76466905997782,
+      "min_demand": 4,
+      "max_demand": 369,
+      "total_demand": 182451,
+      "avg_inventory": 399.9480263157895,
+      "cv_demand": 0.406,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0005",
+      "Category": "Groceries",
+      "mean_demand": 120.01776315789473,
+      "std_demand": 47.43279449575571,
+      "min_demand": 7,
+      "max_demand": 347,
+      "total_demand": 182427,
+      "avg_inventory": 428.7217105263158,
+      "cv_demand": 0.395,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0014",
+      "Category": "Groceries",
+      "mean_demand": 118.69342105263158,
+      "std_demand": 46.89470461303978,
+      "min_demand": 5,
+      "max_demand": 328,
+      "total_demand": 180414,
+      "avg_inventory": 401.0572368421053,
+      "cv_demand": 0.395,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0009",
+      "Category": "Clothing",
+      "mean_demand": 114.98552631578947,
+      "std_demand": 42.715785938999225,
+      "min_demand": 4,
+      "max_demand": 330,
+      "total_demand": 174778,
+      "avg_inventory": 275.4217105263158,
+      "cv_demand": 0.371,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0018",
+      "Category": "Clothing",
+      "mean_demand": 114.4342105263158,
+      "std_demand": 42.777525285528945,
+      "min_demand": 4,
+      "max_demand": 271,
+      "total_demand": 173940,
+      "avg_inventory": 132.12697368421053,
+      "cv_demand": 0.374,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0019",
+      "Category": "Clothing",
+      "mean_demand": 110.52960526315789,
+      "std_demand": 38.79077983540774,
+      "min_demand": 10,
+      "max_demand": 273,
+      "total_demand": 168005,
+      "avg_inventory": 316.9736842105263,
+      "cv_demand": 0.351,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0020",
+      "Category": "Furniture",
+      "mean_demand": 73.49122807017544,
+      "std_demand": 32.5595133001939,
+      "min_demand": 4,
+      "max_demand": 205,
+      "total_demand": 167560,
+      "avg_inventory": 268.9311403508772,
+      "cv_demand": 0.443,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0011",
+      "Category": "Electronics",
+      "mean_demand": 99.8546052631579,
+      "std_demand": 41.1097926835601,
+      "min_demand": 4,
+      "max_demand": 257,
+      "total_demand": 151779,
+      "avg_inventory": 323.6421052631579,
+      "cv_demand": 0.412,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0012",
+      "Category": "Electronics",
+      "mean_demand": 94.34210526315789,
+      "std_demand": 38.16615993040889,
+      "min_demand": 4,
+      "max_demand": 233,
+      "total_demand": 143400,
+      "avg_inventory": 294.4243421052632,
+      "cv_demand": 0.405,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0006",
+      "Category": "Toys",
+      "mean_demand": 92.59210526315789,
+      "std_demand": 46.67184831837103,
+      "min_demand": 4,
+      "max_demand": 361,
+      "total_demand": 140740,
+      "avg_inventory": 219.17302631578949,
+      "cv_demand": 0.504,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0014",
+      "Category": "Furniture",
+      "mean_demand": 74.51907894736843,
+      "std_demand": 32.22102575643619,
+      "min_demand": 4,
+      "max_demand": 200,
+      "total_demand": 113269,
+      "avg_inventory": 228.87828947368422,
+      "cv_demand": 0.432,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0012",
+      "Category": "Furniture",
+      "mean_demand": 74.10065789473684,
+      "std_demand": 32.10388420018227,
+      "min_demand": 4,
+      "max_demand": 193,
+      "total_demand": 112633,
+      "avg_inventory": 286.4243421052632,
+      "cv_demand": 0.433,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0019",
+      "Category": "Furniture",
+      "mean_demand": 73.15131578947368,
+      "std_demand": 32.4423344935592,
+      "min_demand": 4,
+      "max_demand": 211,
+      "total_demand": 111190,
+      "avg_inventory": 140.45263157894738,
+      "cv_demand": 0.443,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0018",
+      "Category": "Furniture",
+      "mean_demand": 72.77434210526316,
+      "std_demand": 31.13418472389151,
+      "min_demand": 4,
+      "max_demand": 181,
+      "total_demand": 110617,
+      "avg_inventory": 247.9592105263158,
+      "cv_demand": 0.428,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0002",
+      "Category": "Clothing",
+      "mean_demand": 124.64342105263158,
+      "std_demand": 45.579136281530246,
+      "min_demand": 16,
+      "max_demand": 285,
+      "total_demand": 94729,
+      "avg_inventory": 152.0342105263158,
+      "cv_demand": 0.366,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0003",
+      "Category": "Clothing",
+      "mean_demand": 123.33552631578948,
+      "std_demand": 43.379889465042524,
+      "min_demand": 4,
+      "max_demand": 296,
+      "total_demand": 93735,
+      "avg_inventory": 570.4236842105263,
+      "cv_demand": 0.352,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0016",
+      "Category": "Groceries",
+      "mean_demand": 122.17763157894737,
+      "std_demand": 50.277975907084446,
+      "min_demand": 5,
+      "max_demand": 378,
+      "total_demand": 92855,
+      "avg_inventory": 379.1934210526316,
+      "cv_demand": 0.412,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0019",
+      "Category": "Groceries",
+      "mean_demand": 122.05131578947369,
+      "std_demand": 48.347242540232,
+      "min_demand": 4,
+      "max_demand": 333,
+      "total_demand": 92759,
+      "avg_inventory": 147.575,
+      "cv_demand": 0.396,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0018",
+      "Category": "Groceries",
+      "mean_demand": 121.90526315789474,
+      "std_demand": 49.9453347936656,
+      "min_demand": 8,
+      "max_demand": 328,
+      "total_demand": 92648,
+      "avg_inventory": 168.98684210526315,
+      "cv_demand": 0.41,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0012",
+      "Category": "Groceries",
+      "mean_demand": 119.97631578947369,
+      "std_demand": 48.3848424866315,
+      "min_demand": 15,
+      "max_demand": 300,
+      "total_demand": 91182,
+      "avg_inventory": 287.7815789473684,
+      "cv_demand": 0.403,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0011",
+      "Category": "Groceries",
+      "mean_demand": 119.28815789473684,
+      "std_demand": 47.93097108026332,
+      "min_demand": 4,
+      "max_demand": 290,
+      "total_demand": 90659,
+      "avg_inventory": 375.7578947368421,
+      "cv_demand": 0.402,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0003",
+      "Category": "Groceries",
+      "mean_demand": 118.42763157894737,
+      "std_demand": 45.042097418279035,
+      "min_demand": 4,
+      "max_demand": 279,
+      "total_demand": 90005,
+      "avg_inventory": 381.8921052631579,
+      "cv_demand": 0.38,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0003",
+      "Category": "Electronics",
+      "mean_demand": 110.52105263157895,
+      "std_demand": 46.777155995220326,
+      "min_demand": 11,
+      "max_demand": 324,
+      "total_demand": 83996,
+      "avg_inventory": 146.84736842105264,
+      "cv_demand": 0.423,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0011",
+      "Category": "Clothing",
+      "mean_demand": 110.38815789473684,
+      "std_demand": 39.68523209130879,
+      "min_demand": 6,
+      "max_demand": 315,
+      "total_demand": 83895,
+      "avg_inventory": 495.53026315789475,
+      "cv_demand": 0.36,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0017",
+      "Category": "Clothing",
+      "mean_demand": 110.3092105263158,
+      "std_demand": 39.83037710199808,
+      "min_demand": 4,
+      "max_demand": 264,
+      "total_demand": 83835,
+      "avg_inventory": 149.81052631578947,
+      "cv_demand": 0.361,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0005",
+      "Category": "Clothing",
+      "mean_demand": 109.67894736842105,
+      "std_demand": 38.283727939915444,
+      "min_demand": 9,
+      "max_demand": 264,
+      "total_demand": 83356,
+      "avg_inventory": 135.36315789473684,
+      "cv_demand": 0.349,
+      "volatility_class": "Stable Demand"
+    },
+    {
+      "Product ID": "P0020",
+      "Category": "Clothing",
+      "mean_demand": 109.65789473684211,
+      "std_demand": 40.13181595303795,
+      "min_demand": 20,
+      "max_demand": 295,
+      "total_demand": 83340,
+      "avg_inventory": 478.8578947368421,
+      "cv_demand": 0.366,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0008",
+      "Category": "Clothing",
+      "mean_demand": 109.25263157894737,
+      "std_demand": 38.45743492962141,
+      "min_demand": 22,
+      "max_demand": 271,
+      "total_demand": 83032,
+      "avg_inventory": 254.13026315789475,
+      "cv_demand": 0.352,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0006",
+      "Category": "Clothing",
+      "mean_demand": 108.98684210526316,
+      "std_demand": 38.987648265665975,
+      "min_demand": 4,
+      "max_demand": 255,
+      "total_demand": 82830,
+      "avg_inventory": 123.71578947368421,
+      "cv_demand": 0.358,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0016",
+      "Category": "Clothing",
+      "mean_demand": 108.32763157894736,
+      "std_demand": 38.75631479400714,
+      "min_demand": 4,
+      "max_demand": 241,
+      "total_demand": 82329,
+      "avg_inventory": 227.4842105263158,
+      "cv_demand": 0.358,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0015",
+      "Category": "Clothing",
+      "mean_demand": 107.43684210526315,
+      "std_demand": 39.39732019439153,
+      "min_demand": 4,
+      "max_demand": 240,
+      "total_demand": 81652,
+      "avg_inventory": 477.26184210526316,
+      "cv_demand": 0.367,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0016",
+      "Category": "Electronics",
+      "mean_demand": 106.48815789473684,
+      "std_demand": 45.73985403268751,
+      "min_demand": 4,
+      "max_demand": 276,
+      "total_demand": 80931,
+      "avg_inventory": 261.91184210526313,
+      "cv_demand": 0.43,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0005",
+      "Category": "Electronics",
+      "mean_demand": 96.29342105263157,
+      "std_demand": 40.35046675645916,
+      "min_demand": 4,
+      "max_demand": 339,
+      "total_demand": 73183,
+      "avg_inventory": 505.91315789473686,
+      "cv_demand": 0.419,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0002",
+      "Category": "Electronics",
+      "mean_demand": 95.89473684210526,
+      "std_demand": 39.55502794547471,
+      "min_demand": 4,
+      "max_demand": 225,
+      "total_demand": 72880,
+      "avg_inventory": 322.5671052631579,
+      "cv_demand": 0.412,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0016",
+      "Category": "Toys",
+      "mean_demand": 94.88421052631578,
+      "std_demand": 47.25369272680451,
+      "min_demand": 5,
+      "max_demand": 262,
+      "total_demand": 72112,
+      "avg_inventory": 339.6842105263158,
+      "cv_demand": 0.498,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0002",
+      "Category": "Toys",
+      "mean_demand": 93.93815789473685,
+      "std_demand": 46.48626092836681,
+      "min_demand": 7,
+      "max_demand": 258,
+      "total_demand": 71393,
+      "avg_inventory": 250.7342105263158,
+      "cv_demand": 0.495,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0008",
+      "Category": "Electronics",
+      "mean_demand": 93.35657894736842,
+      "std_demand": 37.961327785699325,
+      "min_demand": 5,
+      "max_demand": 228,
+      "total_demand": 70951,
+      "avg_inventory": 106.98947368421052,
+      "cv_demand": 0.407,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0004",
+      "Category": "Electronics",
+      "mean_demand": 93.0592105263158,
+      "std_demand": 38.55212810884895,
+      "min_demand": 4,
+      "max_demand": 218,
+      "total_demand": 70725,
+      "avg_inventory": 205.90526315789472,
+      "cv_demand": 0.414,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0014",
+      "Category": "Electronics",
+      "mean_demand": 92.96315789473684,
+      "std_demand": 37.91014562791486,
+      "min_demand": 4,
+      "max_demand": 229,
+      "total_demand": 70652,
+      "avg_inventory": 439.6434210526316,
+      "cv_demand": 0.408,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0003",
+      "Category": "Toys",
+      "mean_demand": 92.94868421052631,
+      "std_demand": 45.09344709155015,
+      "min_demand": 4,
+      "max_demand": 237,
+      "total_demand": 70641,
+      "avg_inventory": 147.325,
+      "cv_demand": 0.485,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0001",
+      "Category": "Electronics",
+      "mean_demand": 92.81447368421053,
+      "std_demand": 35.53622436538343,
+      "min_demand": 15,
+      "max_demand": 218,
+      "total_demand": 70539,
+      "avg_inventory": 245.21447368421053,
+      "cv_demand": 0.383,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0013",
+      "Category": "Toys",
+      "mean_demand": 92.7921052631579,
+      "std_demand": 46.93986218800279,
+      "min_demand": 5,
+      "max_demand": 257,
+      "total_demand": 70522,
+      "avg_inventory": 128.69342105263158,
+      "cv_demand": 0.506,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0020",
+      "Category": "Toys",
+      "mean_demand": 92.03552631578947,
+      "std_demand": 45.157199307103774,
+      "min_demand": 9,
+      "max_demand": 249,
+      "total_demand": 69947,
+      "avg_inventory": 131.76447368421051,
+      "cv_demand": 0.491,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0007",
+      "Category": "Toys",
+      "mean_demand": 91.86578947368422,
+      "std_demand": 46.37394989242259,
+      "min_demand": 4,
+      "max_demand": 273,
+      "total_demand": 69818,
+      "avg_inventory": 366.75131578947367,
+      "cv_demand": 0.505,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0005",
+      "Category": "Toys",
+      "mean_demand": 91.59473684210526,
+      "std_demand": 46.09243703945715,
+      "min_demand": 4,
+      "max_demand": 241,
+      "total_demand": 69612,
+      "avg_inventory": 465.8013157894737,
+      "cv_demand": 0.503,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0001",
+      "Category": "Toys",
+      "mean_demand": 91.43947368421053,
+      "std_demand": 43.643501521063456,
+      "min_demand": 4,
+      "max_demand": 254,
+      "total_demand": 69494,
+      "avg_inventory": 206.34473684210528,
+      "cv_demand": 0.477,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0015",
+      "Category": "Toys",
+      "mean_demand": 91.25131578947368,
+      "std_demand": 46.224448109301434,
+      "min_demand": 4,
+      "max_demand": 274,
+      "total_demand": 69351,
+      "avg_inventory": 126.68552631578947,
+      "cv_demand": 0.507,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0008",
+      "Category": "Furniture",
+      "mean_demand": 75.10526315789474,
+      "std_demand": 33.99720167798066,
+      "min_demand": 4,
+      "max_demand": 214,
+      "total_demand": 57080,
+      "avg_inventory": 108.95394736842105,
+      "cv_demand": 0.453,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0003",
+      "Category": "Furniture",
+      "mean_demand": 74.74342105263158,
+      "std_demand": 34.27562017642581,
+      "min_demand": 5,
+      "max_demand": 208,
+      "total_demand": 56805,
+      "avg_inventory": 304.83026315789476,
+      "cv_demand": 0.459,
+      "volatility_class": "High Volatility"
+    },
+    {
+      "Product ID": "P0011",
+      "Category": "Furniture",
+      "mean_demand": 74.25394736842105,
+      "std_demand": 33.30622062353876,
+      "min_demand": 6,
+      "max_demand": 189,
+      "total_demand": 56433,
+      "avg_inventory": 209.5828947368421,
+      "cv_demand": 0.449,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0015",
+      "Category": "Furniture",
+      "mean_demand": 73.70263157894736,
+      "std_demand": 32.513436864293226,
+      "min_demand": 6,
+      "max_demand": 184,
+      "total_demand": 56014,
+      "avg_inventory": 301.03815789473686,
+      "cv_demand": 0.441,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0010",
+      "Category": "Furniture",
+      "mean_demand": 72.71710526315789,
+      "std_demand": 31.336925009959327,
+      "min_demand": 10,
+      "max_demand": 195,
+      "total_demand": 55265,
+      "avg_inventory": 350.8013157894737,
+      "cv_demand": 0.431,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0017",
+      "Category": "Furniture",
+      "mean_demand": 72.46973684210526,
+      "std_demand": 31.2138128596562,
+      "min_demand": 10,
+      "max_demand": 171,
+      "total_demand": 55077,
+      "avg_inventory": 370.62368421052633,
+      "cv_demand": 0.431,
+      "volatility_class": "Moderate Volatility"
+    },
+    {
+      "Product ID": "P0016",
+      "Category": "Furniture",
+      "mean_demand": 71.90394736842106,
+      "std_demand": 31.755903420506883,
+      "min_demand": 4,
+      "max_demand": 169,
+      "total_demand": 54647,
+      "avg_inventory": 241.29473684210527,
+      "cv_demand": 0.442,
+      "volatility_class": "Moderate Volatility"
+    }
+  ],
+  "business_insights": {
+    "top_selling_categories": [
+      "Groceries",
+      "Clothing"
+    ],
+    "lowest_selling_category": "Electronics",
+    "top_performing_store": "S002",
+    "stockout_prevalence": "13.68% of observation days experience stockout risk where demand exceeds on-hand stock.",
+    "overstock_prevalence": "41.97% of records exhibit excess inventory exceeding 3x daily demand.",
+    "promotion_impact": "Promotions increase average daily demand from 95.0 to 123.3 units (an uplift of 29.7%).",
+    "policy_recommendation": "Products classified as High Volatility (e.g. fashion/seasonal clothing) require dynamic safety stock buffers, whereas Stable Demand products (groceries) can operate with fixed periodic review replenishment cycles."
+  },
+  "filter_metadata": {
+    "date_range": [
+      "2022-01-01",
+      "2024-01-30"
+    ],
+    "stores": [
+      "S001",
+      "S002",
+      "S003",
+      "S004",
+      "S005"
+    ],
+    "categories": [
+      "Clothing",
+      "Electronics",
+      "Furniture",
+      "Groceries",
+      "Toys"
+    ],
+    "regions": [
+      "East",
+      "North",
+      "South",
+      "West"
+    ],
+    "products": [
+      "P0001",
+      "P0002",
+      "P0003",
+      "P0004",
+      "P0005",
+      "P0006",
+      "P0007",
+      "P0008",
+      "P0009",
+      "P0010",
+      "P0011",
+      "P0012",
+      "P0013",
+      "P0014",
+      "P0015",
+      "P0016",
+      "P0017",
+      "P0018",
+      "P0019",
+      "P0020"
+    ]
+  }
+}

@@ -1,0 +1,269 @@
+"""
+Generates notebooks/03_exploratory_data_analysis.ipynb
+"""
+
+import json
+import os
+
+nb = {
+    "cells": [
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "# VantageGro Retail Stock Insight\n",
+                "## Stage 3: Exploratory Data Analysis (EDA)\n",
+                "\n",
+                "### Business & Strategic Objectives\n",
+                "Investigate historical demand patterns, store/regional performance, stockout vs overstock risks, promotion sensitivity, and SKU volatility.\n",
+                "\n",
+                "### Core Business Questions Addressed\n",
+                "1. **Which product categories sell the most?**\n",
+                "2. **Which stores have the highest sales and customer demand?**\n",
+                "3. **When do stockouts and excess inventory occur?**\n",
+                "4. **Are promotions associated with statistically meaningful sales uplift?**\n",
+                "5. **How do prices and discounts relate to demand?**\n",
+                "6. **What seasonal and weather dynamics are present?**\n",
+                "7. **Which SKUs show high demand volatility requiring adaptive safety stocks?**"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "import os\n",
+                "import sys\n",
+                "import json\n",
+                "import pandas as pd\n",
+                "import numpy as np\n",
+                "import matplotlib.pyplot as plt\n",
+                "import seaborn as sns\n",
+                "import plotly.express as px\n",
+                "import plotly.graph_objects as go\n",
+                "\n",
+                "sns.set_theme(style='whitegrid', palette='viridis')\n",
+                "plt.rcParams['figure.figsize'] = (10, 5)\n",
+                "print('EDA Environment initialized successfully!')"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 1. Load Preprocessed Cleaned Dataset"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "data_path = 'data/processed/vantagegro_cleaned.csv'\n",
+                "if not os.path.exists(data_path):\n",
+                "    data_path = '../data/processed/vantagegro_cleaned.csv'\n",
+                "\n",
+                "df = pd.read_csv(data_path)\n",
+                "df['Date'] = pd.to_datetime(df['Date'])\n",
+                "print(f'Cleaned Dataset: {len(df):,} records, {len(df.columns)} columns')\n",
+                "df.head()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 2. Category & Store Sales vs Demand Performance"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "# Category Performance\n",
+                "cat_df = df.groupby('Category').agg(\n",
+                "    total_sales=('Units Sold', 'sum'),\n",
+                "    total_demand=('Demand', 'sum'),\n",
+                "    avg_daily_demand=('Demand', 'mean'),\n",
+                "    avg_inventory=('Inventory Level', 'mean')\n",
+                ").reset_index().sort_values('total_demand', ascending=False)\n",
+                "print('=== CATEGORY PERFORMANCE ===')\n",
+                "display(cat_df)\n",
+                "\n",
+                "plt.figure(figsize=(9, 4))\n",
+                "x = np.arange(len(cat_df))\n",
+                "plt.bar(x - 0.2, cat_df['total_demand'], 0.4, label='Customer Demand', color='#10b981')\n",
+                "plt.bar(x + 0.2, cat_df['total_sales'], 0.4, label='Units Sold', color='#3b82f6')\n",
+                "plt.title('Category Demand vs Units Sold', fontsize=12, fontweight='bold')\n",
+                "plt.xticks(x, cat_df['Category'])\n",
+                "plt.ylabel('Units')\n",
+                "plt.legend()\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 3. Store & Regional Dynamics"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "store_df = df.groupby(['Store ID', 'Region']).agg(\n",
+                "    total_demand=('Demand', 'sum'),\n",
+                "    total_sales=('Units Sold', 'sum'),\n",
+                "    avg_inventory=('Inventory Level', 'mean')\n",
+                ").reset_index().sort_values('total_demand', ascending=False)\n",
+                "display(store_df)\n",
+                "\n",
+                "plt.figure(figsize=(8, 4))\n",
+                "sns.barplot(data=store_df, x='Store ID', y='total_demand', hue='Region', palette='viridis')\n",
+                "plt.title('Demand by Store ID and Region', fontsize=11, fontweight='bold')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 4. Stockout Risk vs Overstock Risk Quantification\n",
+                "- **Stockout Risk**: Inventory Level < Demand (demand cannot be met by stock)\n",
+                "- **Overstock Risk**: Inventory Level > 3 × Demand (holding excessive idle working capital)"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "stockout_risk = (df['Inventory Level'] < df['Demand']).sum()\n",
+                "severe_stockout = (df['Inventory Level'] == 0).sum()\n",
+                "overstock_risk = (df['Inventory Level'] > (3 * df['Demand'])).sum()\n",
+                "balanced = len(df) - stockout_risk - overstock_risk\n",
+                "\n",
+                "print(f'Stockout Risk Days:      {stockout_risk:,} ({stockout_risk/len(df)*100:.1f}%)')\n",
+                "print(f'Severe (Zero Stock):     {severe_stockout:,} ({severe_stockout/len(df)*100:.1f}%)')\n",
+                "print(f'Overstock Risk Days:     {overstock_risk:,} ({overstock_risk/len(df)*100:.1f}%)')\n",
+                "print(f'Balanced Stock Days:     {balanced:,} ({balanced/len(df)*100:.1f}%)')\n",
+                "\n",
+                "plt.figure(figsize=(8, 4))\n",
+                "plt.bar(['Stockout Risk', 'Overstock Risk', 'Balanced'], [stockout_risk, overstock_risk, balanced], color=['#ef4444', '#f59e0b', '#10b981'])\n",
+                "plt.title('Inventory Health Risk Distribution', fontsize=11, fontweight='bold')\n",
+                "plt.ylabel('Records')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 5. Promotional Lift & Discount Sensitivity"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "promo_grp = df.groupby('Promotion')['Demand'].agg(['count', 'mean', 'median', 'std'])\n",
+                "print('=== PROMOTION DEMAND UPLIFT ===')\n",
+                "display(promo_grp)\n",
+                "uplift = (promo_grp.loc[1, 'mean'] - promo_grp.loc[0, 'mean']) / promo_grp.loc[0, 'mean'] * 100\n",
+                "print(f'Active Promotions generate an average Demand uplift of +{uplift:.1f}%!')\n",
+                "\n",
+                "plt.figure(figsize=(7, 4))\n",
+                "sns.boxplot(data=df, x='Promotion', y='Demand', palette=['#94a3b8', '#10b981'])\n",
+                "plt.title('Demand Distribution: Standard (0) vs Promotional (1)', fontsize=11, fontweight='bold')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 6. Seasonality & Weather Variations"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4))\n",
+                "df.groupby('Seasonality')['Demand'].mean().plot(kind='bar', ax=ax1, color='#059669')\n",
+                "ax1.set_title('Mean Demand by Season', fontsize=10, fontweight='bold')\n",
+                "ax1.set_ylabel('Mean Demand')\n",
+                "\n",
+                "df.groupby('Weather Condition')['Demand'].mean().plot(kind='bar', ax=ax2, color='#3b82f6')\n",
+                "ax2.set_title('Mean Demand by Weather', fontsize=10, fontweight='bold')\n",
+                "plt.suptitle('Environmental & Calendar Demand Drivers', fontsize=12, fontweight='bold')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        },
+        {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": [
+                "### 7. Product Demand Volatility (Coefficient of Variation)\n",
+                "Segmenting SKUs to establish differentiated replenishment policies:\n",
+                "- High Volatility (CV > 0.45): Requires dynamic safety stocks\n",
+                "- Stable Demand (CV < 0.35): Suitable for standard periodic reordering"
+            ]
+        },
+        {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [
+                "prod_df = df.groupby(['Product ID', 'Category']).agg(\n",
+                "    mean_demand=('Demand', 'mean'),\n",
+                "    std_demand=('Demand', 'std'),\n",
+                "    total_demand=('Demand', 'sum')\n",
+                ").reset_index()\n",
+                "prod_df['cv_demand'] = (prod_df['std_demand'] / prod_df['mean_demand']).round(3)\n",
+                "prod_df['volatility'] = np.where(prod_df['cv_demand'] > 0.45, 'High Volatility', np.where(prod_df['cv_demand'] > 0.35, 'Moderate Volatility', 'Stable Demand'))\n",
+                "display(prod_df.sort_values('total_demand', ascending=False).head(10))\n",
+                "\n",
+                "plt.figure(figsize=(9, 5))\n",
+                "sns.scatterplot(data=prod_df, x='mean_demand', y='cv_demand', hue='volatility', s=100, palette={'High Volatility': '#ef4444', 'Moderate Volatility': '#f59e0b', 'Stable Demand': '#10b981'})\n",
+                "for _, r in prod_df.iterrows():\n",
+                "    plt.text(r['mean_demand']+1, r['cv_demand'], r['Product ID'], fontsize=7)\n",
+                "plt.title('Product Volume vs Coefficient of Variation', fontsize=11, fontweight='bold')\n",
+                "plt.xlabel('Mean Daily Demand')\n",
+                "plt.ylabel('Coefficient of Variation')\n",
+                "plt.tight_layout()\n",
+                "plt.show()"
+            ]
+        }
+    ],
+    "metadata": {
+        "language_info": {
+            "name": "python"
+        }
+    },
+    "nbformat": 4,
+    "nbformat_minor": 2
+}
+
+with open("notebooks/03_exploratory_data_analysis.ipynb", "w", encoding="utf-8") as f:
+    json.dump(nb, f, indent=2)
+
+print("notebooks/03_exploratory_data_analysis.ipynb generated successfully!")
